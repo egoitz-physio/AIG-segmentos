@@ -13,7 +13,6 @@ export type TabId = 'results' | 'product' | 'value' | 'implement'
 
 function App() {
   const [activeTab, setActiveTab] = useState<TabId>('results')
-  const [showContent, setShowContent] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -23,10 +22,7 @@ function App() {
   }, [])
 
   const handleExplore = () => {
-    setShowContent(true)
-    setTimeout(() => {
-      document.getElementById('content')?.scrollIntoView({ behavior: 'smooth' })
-    }, 100)
+    document.getElementById('content')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -44,33 +40,27 @@ function App() {
       <Navigation scrolled={scrolled} onExplore={handleExplore} />
       <HeroSection onExplore={handleExplore} />
       
-      {showContent && (
-        <motion.div
-          id="content"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          <TabSection activeTab={activeTab} setActiveTab={setActiveTab} />
-          
-          <main className="relative">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              >
-                {activeTab === 'results' && <ResultsTab />}
-                {activeTab === 'product' && <ProductTab />}
-                {activeTab === 'value' && <ValueTab />}
-                {activeTab === 'implement' && <ImplementTab />}
-              </motion.div>
-            </AnimatePresence>
-          </main>
-        </motion.div>
-      )}
+      {/* Content always visible */}
+      <div id="content">
+        <TabSection activeTab={activeTab} setActiveTab={setActiveTab} />
+        
+        <main className="relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {activeTab === 'results' && <ResultsTab />}
+              {activeTab === 'product' && <ProductTab />}
+              {activeTab === 'value' && <ValueTab />}
+              {activeTab === 'implement' && <ImplementTab />}
+            </motion.div>
+          </AnimatePresence>
+        </main>
+      </div>
       
       <FooterSection />
     </div>
