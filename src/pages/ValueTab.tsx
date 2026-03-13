@@ -1,90 +1,64 @@
 import { motion } from 'framer-motion'
 
-export default function ValueTab() {
+interface ValueTabProps {
+  isDark: boolean
+}
+
+export default function ValueTab({ isDark }: ValueTabProps) {
+  const cardBg = isDark ? 'bg-[#0d1a2e]' : 'bg-white'
+  const borderColor = isDark ? 'border-white/5' : 'border-black/5'
+  const textMain = isDark ? 'text-cream' : 'text-[#0a1628]'
+  const textMuted = isDark ? 'text-cream/40' : 'text-[#0a1628]/50'
+  const textAccent = isDark ? 'text-accent' : 'text-[#1a3a6e]'
+
   const impactMetrics = [
-    { 
-      value: 'x3', 
-      label: 'Activación', 
-      detail: 'Con modelo One-to-One + Fisio',
-      context: 'Con los one-to-ones con fisioterapeuta, la adherencia se multiplica por tres'
-    },
-    { 
-      value: '90%', 
-      label: 'Adherencia', 
-      detail: 'Usuarios activos semana 10',
-      context: 'El 90% de usuarios siguen activos, consolidando un hábito de mínimo 5 min/semana'
-    },
-    { 
-      value: '9.8', 
-      label: 'Satisfacción', 
-      detail: 'Fisify 3.0',
-      context: 'Con el lanzamiento de Fisify 3.0 hemos triplicado la adherencia de los asegurados'
-    },
+    { value: 'x3', label: 'Activación', detail: 'Con modelo One-to-One + Fisio', context: 'Con los one-to-ones con fisioterapeuta, la adherencia se multiplica por tres' },
+    { value: '90%', label: 'Adherencia', detail: 'Usuarios activos semana 10', context: 'El 90% de usuarios siguen activos, consolidando un hábito de mínimo 5 min/semana' },
+    { value: '9.8', label: 'Satisfacción', detail: 'Fisify 3.0', context: 'Con el lanzamiento de Fisify 3.0 hemos triplicado la adherencia de los asegurados' },
   ]
 
   const addons = [
-    { 
-      num: '01', 
-      title: 'FisifyCare Premium', 
-      desc: '30 min con fisioterapeuta de la red Medicus + plan de recuperación + seguimiento semanal. Máximo nivel de atención personalizada.', 
-      tag: 'Premium',
-      objective: 'Objetivo: disminuir siniestralidad'
-    },
-    { 
-      num: '02', 
-      title: 'Apoyo de Marketing', 
-      desc: 'El equipo de marketing de Fisify crea contenido branded para la comunicación interna de Medicus.', 
-      tag: 'Incluido',
-      objective: 'Objetivo: maximizar activación'
-    },
-    { 
-      num: '03', 
-      title: 'Formaciones Online', 
-      desc: 'Charlas y webinars de salud física (45 min, online). Adaptadas al perfil del asegurado.', 
-      tag: 'Add-on',
-      objective: 'Objetivo: educación preventiva'
-    },
-    { 
-      num: '04', 
-      title: 'Clases Grupales', 
-      desc: 'Espalda sana, fuerza, hipopresivos y suelo pélvico. Sesiones de 30 min online en directo.', 
-      tag: 'Add-on',
-      objective: 'Objetivo: comunidad y engagement'
-    },
-  ]
-
-  const forInsured = [
-    'Acceso 24/7 a programas de prevención y rehabilitación',
-    'Atención personalizada con fisioterapeutas dedicados',
-    'Tecnología de vanguardia (VA, visión artificial, wearables)',
-    'Gamificación y engagement continuo'
-  ]
-
-  const forMedicus = [
-    { title: 'Reducción de siniestralidad', desc: 'Prevención activa reduce costos de tratamientos correctivos', metric: '-25%', label: 'estimado' },
-    { title: 'Diferenciación competitiva', desc: 'Liderazgo en innovación entre las prepagas argentinas', metric: '#1', label: 'posición' },
-    { title: 'Satisfacción del asegurado', desc: 'Mejora en NPS y fidelización de socios', metric: '9.8', label: 'NPS proy.' },
-    { title: 'Analytics avanzado', desc: 'Datos de uso, adherencia, zonas de dolor y outcomes', metric: '100%', label: 'visibilidad' },
+    { num: '01', title: 'FisifyCare Premium', desc: '30 min con fisioterapeuta de la red Medicus + plan de recuperación + seguimiento semanal.', tag: 'Premium', objective: 'Objetivo: disminuir siniestralidad' },
+    { num: '02', title: 'Apoyo de Marketing', desc: 'El equipo de marketing de Fisify crea contenido branded para la comunicación interna de Medicus.', tag: 'Incluido', objective: 'Objetivo: maximizar activación' },
+    { num: '03', title: 'Formaciones Online', desc: 'Charlas y webinars de salud física (45 min, online). Adaptadas al perfil del asegurado.', tag: 'Add-on', objective: 'Objetivo: educación preventiva' },
+    { num: '04', title: 'Clases Grupales', desc: 'Espalda sana, fuerza, hipopresivos y suelo pélvico. Sesiones de 30 min online en directo.', tag: 'Add-on', objective: 'Objetivo: comunidad y engagement' },
   ]
 
   return (
     <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-20">
-      {/* Header */}
+      {/* Header with image */}
       <section className="mb-20">
-        <span className="section-label mb-8 inline-block">
-          Impacto Demostrado
-        </span>
-        <h2 className="heading-display text-display-lg text-cream mb-6 max-w-3xl">
-          Resultados reales que validan nuestro modelo
-        </h2>
-        <p className="text-cream/50 text-xl max-w-2xl font-light">
-          Más adherencia = menos siniestralidad = mayor rentabilidad para Medicus.
-        </p>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <span className="section-label mb-8 inline-block">
+              Impacto Demostrado
+            </span>
+            <h2 className={`heading-display text-display-lg mb-6 max-w-xl ${textMain}`}>
+              Resultados reales que validan nuestro modelo
+            </h2>
+            <p className={`text-xl max-w-lg font-light ${textMuted}`}>
+              Más adherencia = menos siniestralidad = mayor rentabilidad para Medicus.
+            </p>
+          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative aspect-[4/3] overflow-hidden"
+          >
+            <img
+              src="/images/value-patient.png"
+              alt="Paciente usando Fisify"
+              className="w-full h-full object-cover"
+            />
+            <div className={`absolute inset-0 ${isDark ? 'bg-gradient-to-t from-[#0a1628]/50 to-transparent' : 'bg-gradient-to-t from-white/30 to-transparent'}`} />
+          </motion.div>
+        </div>
       </section>
 
       {/* Key metrics */}
       <section className="mb-32">
-        <div className="grid lg:grid-cols-3 gap-px bg-cream/5">
+        <div className={`grid lg:grid-cols-3 gap-px ${borderColor}`}>
           {impactMetrics.map((metric, i) => (
             <motion.div
               key={metric.label}
@@ -92,18 +66,18 @@ export default function ValueTab() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.15 }}
               viewport={{ once: true }}
-              className="bg-[#0d1a2e] p-12 lg:p-16"
+              className={`${cardBg} p-12 lg:p-16`}
             >
               <span className="stat-value text-6xl lg:text-7xl block">
                 {metric.value}
               </span>
-              <h3 className="font-display text-xl text-cream mt-4 mb-2">
+              <h3 className={`font-display text-xl mt-4 mb-2 ${textMain}`}>
                 {metric.label}
               </h3>
-              <p className="text-accent text-sm mb-4">
+              <p className={`text-sm mb-4 ${textAccent}`}>
                 {metric.detail}
               </p>
-              <p className="text-cream/30 text-sm font-light leading-relaxed">
+              <p className={`text-sm font-light leading-relaxed ${textMuted}`}>
                 {metric.context}
               </p>
             </motion.div>
@@ -111,143 +85,111 @@ export default function ValueTab() {
         </div>
 
         {/* Formula */}
-        <div className="mt-px border border-accent/20 bg-accent/5 p-8 text-center">
-          <p className="text-cream/70 text-lg font-light tracking-wide">
-            <span className="text-accent">Más adherencia</span>
-            <span className="text-cream/20 mx-4 md:mx-6">→</span>
-            <span className="text-cream">Menos siniestralidad</span>
-            <span className="text-cream/20 mx-4 md:mx-6">→</span>
-            <span className="text-accent">Mayor rentabilidad</span>
+        <div className={`mt-px border p-8 text-center ${isDark ? 'border-accent/20 bg-accent/5' : 'border-[#1a3a6e]/20 bg-[#1a3a6e]/5'}`}>
+          <p className={`text-lg font-light tracking-wide ${isDark ? 'text-cream/70' : 'text-[#0a1628]/70'}`}>
+            <span className={textAccent}>Más adherencia</span>
+            <span className={isDark ? 'text-cream/20 mx-4 md:mx-6' : 'text-[#0a1628]/20 mx-4 md:mx-6'}>→</span>
+            <span className={textMain}>Menos siniestralidad</span>
+            <span className={isDark ? 'text-cream/20 mx-4 md:mx-6' : 'text-[#0a1628]/20 mx-4 md:mx-6'}>→</span>
+            <span className={textAccent}>Mayor rentabilidad</span>
           </p>
         </div>
       </section>
 
-      {/* Value for Insured */}
+      {/* Image break */}
       <section className="mb-32">
-        <div className="flex items-center gap-6 mb-12">
-          <div className="w-16 h-px bg-accent/50" />
-          <h3 className="text-cream/40 text-xs uppercase tracking-[0.3em] font-light">
-            Valor para los Asegurados
-          </h3>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-cream/5">
-          {forInsured.map((item, i) => (
-            <motion.div
-              key={item}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-[#0d1a2e] p-8 flex items-start gap-4"
-            >
-              <span className="text-accent text-lg">✓</span>
-              <p className="text-cream/70 text-sm font-light leading-relaxed">
-                {item}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="relative aspect-[21/9] overflow-hidden"
+        >
+          <img
+            src="/images/value-campus.png"
+            alt="Campus de salud Medicus"
+            className="w-full h-full object-cover"
+          />
+          <div className={`absolute inset-0 ${isDark ? 'bg-[#0a1628]/30' : 'bg-white/20'}`} />
+        </motion.div>
       </section>
 
-      {/* Add-ons */}
+      {/* Add-ons with image */}
       <section className="mb-32">
-        <div className="flex items-center gap-6 mb-12">
-          <div className="w-16 h-px bg-cream/20" />
-          <h3 className="text-cream/40 text-xs uppercase tracking-[0.3em] font-light">
-            Servicios Add-on Según Necesidad
-          </h3>
-        </div>
+        <div className="grid lg:grid-cols-2 gap-12">
+          <div>
+            <div className="flex items-center gap-6 mb-12">
+              <div className={`w-16 h-px ${isDark ? 'bg-cream/20' : 'bg-[#0a1628]/20'}`} />
+              <h3 className={`text-xs uppercase tracking-[0.3em] font-light ${textMuted}`}>
+                Servicios Add-on
+              </h3>
+            </div>
 
-        <div className="grid md:grid-cols-2 gap-px bg-cream/5">
-          {addons.map((addon, i) => (
-            <motion.div
-              key={addon.num}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-[#0d1a2e] p-10"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <span className="text-accent/50 text-xs tracking-[0.3em]">{addon.num}</span>
-                <span className={`text-[10px] uppercase tracking-[0.2em] px-3 py-1 border ${
-                  addon.tag === 'Premium' ? 'border-accent/30 text-accent' :
-                  addon.tag === 'Incluido' ? 'border-accent/20 text-accent/70' :
-                  'border-cream/10 text-cream/40'
-                }`}>
-                  {addon.tag}
-                </span>
-              </div>
-              <h4 className="font-display text-xl text-cream mb-3">
-                {addon.title}
-              </h4>
-              <p className="text-cream/40 text-sm font-light leading-relaxed mb-4">
-                {addon.desc}
-              </p>
-              <p className="text-cream/20 text-xs uppercase tracking-widest">
-                {addon.objective}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+            <div className={`grid gap-px ${borderColor}`}>
+              {addons.map((addon, i) => (
+                <motion.div
+                  key={addon.num}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  className={`${cardBg} p-8`}
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <span className={`text-xs tracking-[0.3em] ${isDark ? 'text-accent/50' : 'text-[#1a3a6e]/50'}`}>{addon.num}</span>
+                    <span className={`text-[10px] uppercase tracking-[0.2em] px-3 py-1 border ${
+                      addon.tag === 'Premium' 
+                        ? isDark ? 'border-accent/30 text-accent' : 'border-[#1a3a6e]/30 text-[#1a3a6e]'
+                        : isDark ? 'border-cream/10 text-cream/40' : 'border-[#0a1628]/10 text-[#0a1628]/40'
+                    }`}>
+                      {addon.tag}
+                    </span>
+                  </div>
+                  <h4 className={`font-display text-lg mb-2 ${textMain}`}>{addon.title}</h4>
+                  <p className={`text-sm font-light ${textMuted}`}>{addon.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
 
-      {/* Value for Medicus */}
-      <section className="mb-32">
-        <div className="flex items-center gap-6 mb-12">
-          <div className="w-16 h-px bg-accent/50" />
-          <h3 className="text-cream/40 text-xs uppercase tracking-[0.3em] font-light">
-            Valor para Medicus
-          </h3>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-px bg-cream/5">
-          {forMedicus.map((item, i) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-[#0d1a2e] p-10 flex items-start justify-between"
-            >
-              <div className="flex-1">
-                <h4 className="font-display text-cream mb-2">{item.title}</h4>
-                <p className="text-cream/40 text-sm font-light">{item.desc}</p>
-              </div>
-              <div className="text-right flex-shrink-0 ml-8">
-                <span className="text-accent text-2xl font-display">{item.metric}</span>
-                <span className="block text-cream/30 text-xs mt-1 font-light">{item.label}</span>
-              </div>
-            </motion.div>
-          ))}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative aspect-square overflow-hidden lg:aspect-auto"
+          >
+            <img
+              src="/images/value-care.png"
+              alt="Fisioterapeuta cuidando paciente"
+              className="w-full h-full object-cover"
+            />
+            <div className={`absolute inset-0 ${isDark ? 'bg-gradient-to-r from-[#0a1628]/50 to-transparent' : 'bg-gradient-to-r from-white/30 to-transparent'}`} />
+          </motion.div>
         </div>
       </section>
 
       {/* Strategic positioning */}
       <section className="mb-32">
-        <div className="border border-cream/10 bg-[#0d1a2e] p-12 lg:p-16">
+        <div className={`border p-12 lg:p-16 ${cardBg} ${borderColor}`}>
           <div className="max-w-3xl">
-            <span className="text-accent/50 text-xs tracking-[0.3em] block mb-6">
+            <span className={`text-xs tracking-[0.3em] block mb-6 ${isDark ? 'text-accent/50' : 'text-[#1a3a6e]/50'}`}>
               Posicionamiento Estratégico
             </span>
-            <h3 className="font-display text-3xl text-cream mb-6">
+            <h3 className={`font-display text-3xl mb-6 ${textMain}`}>
               Medicus como referente en innovación
             </h3>
-            <p className="text-cream/50 text-lg font-light leading-relaxed mb-8">
+            <p className={`text-lg font-light leading-relaxed mb-8 ${textMuted}`}>
               50 años de excelencia médica + tecnología de vanguardia. 
               La combinación perfecta para liderar el futuro de la salud digital en Argentina.
             </p>
-            <div className="grid sm:grid-cols-3 gap-6">
+            <div className={`grid sm:grid-cols-3 gap-6 border-t pt-8 ${borderColor}`}>
               {[
                 { label: 'Años de trayectoria', value: '50+' },
                 { label: 'Especialistas en red', value: '10k+' },
                 { label: 'Asegurados potenciales', value: '600k+' },
               ].map((stat) => (
-                <div key={stat.label} className="text-center py-6 border-t border-cream/5">
-                  <span className="text-accent text-2xl font-display">{stat.value}</span>
-                  <span className="block text-cream/30 text-xs mt-2 uppercase tracking-widest">{stat.label}</span>
+                <div key={stat.label} className="text-center">
+                  <span className={`text-2xl font-display ${textAccent}`}>{stat.value}</span>
+                  <span className={`block text-xs mt-2 uppercase tracking-widest ${textMuted}`}>{stat.label}</span>
                 </div>
               ))}
             </div>
@@ -257,21 +199,16 @@ export default function ValueTab() {
 
       {/* CTA */}
       <section>
-        <div className="border border-cream/10 p-12 lg:p-20 text-center bg-[#0d1a2e]">
-          <h2 className="heading-display text-display text-cream mb-6">
+        <div className={`border p-12 lg:p-20 text-center ${cardBg} ${borderColor}`}>
+          <h2 className={`heading-display text-display mb-6 ${textMain}`}>
             ¿Comenzamos juntos?
           </h2>
-          <p className="text-cream/50 text-xl mb-10 max-w-2xl mx-auto font-light">
-            Agenda una reunión con nuestro equipo para definir los próximos pasos 
-            de esta alianza estratégica.
+          <p className={`text-xl mb-10 max-w-2xl mx-auto font-light ${textMuted}`}>
+            Agenda una reunión con nuestro equipo para definir los próximos pasos de esta alianza estratégica.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="btn-primary">
-              Agendar Reunión
-            </button>
-            <button className="btn-ghost">
-              Descargar Propuesta
-            </button>
+            <button className="btn-primary">Agendar Reunión</button>
+            <button className="btn-ghost">Descargar Propuesta</button>
           </div>
         </div>
       </section>

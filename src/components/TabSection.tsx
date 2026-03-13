@@ -4,6 +4,7 @@ import type { TabId } from '../App'
 interface TabSectionProps {
   activeTab: TabId
   setActiveTab: (tab: TabId) => void
+  isDark: boolean
 }
 
 const tabs = [
@@ -13,9 +14,13 @@ const tabs = [
   { id: 'implement' as TabId, label: 'Implementación', num: '04' },
 ]
 
-export default function TabSection({ activeTab, setActiveTab }: TabSectionProps) {
+export default function TabSection({ activeTab, setActiveTab, isDark }: TabSectionProps) {
   return (
-    <section className="sticky top-0 z-40 bg-[#0a1628]/95 backdrop-blur-xl border-b border-cream/5">
+    <section className={`sticky top-0 z-40 backdrop-blur-xl border-b transition-colors ${
+      isDark 
+        ? 'bg-[#0a1628]/95 border-white/5' 
+        : 'bg-white/95 border-black/5'
+    }`}>
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between">
           {/* Tabs */}
@@ -26,12 +31,14 @@ export default function TabSection({ activeTab, setActiveTab }: TabSectionProps)
                 onClick={() => setActiveTab(tab.id)}
                 className={`relative flex items-center gap-3 px-6 lg:px-8 py-6 transition-all duration-300 ${
                   activeTab === tab.id 
-                    ? 'text-cream' 
-                    : 'text-cream/30 hover:text-cream/60'
+                    ? isDark ? 'text-cream' : 'text-[#0a1628]'
+                    : isDark ? 'text-cream/30 hover:text-cream/60' : 'text-[#0a1628]/30 hover:text-[#0a1628]/60'
                 }`}
               >
                 <span className={`text-xs font-light tracking-widest transition-colors ${
-                  activeTab === tab.id ? 'text-accent' : 'text-cream/20'
+                  activeTab === tab.id 
+                    ? isDark ? 'text-accent' : 'text-[#1a3a6e]'
+                    : isDark ? 'text-cream/20' : 'text-[#0a1628]/20'
                 }`}>
                   {tab.num}
                 </span>
@@ -43,7 +50,11 @@ export default function TabSection({ activeTab, setActiveTab }: TabSectionProps)
                 {activeTab === tab.id && (
                   <motion.div
                     layoutId="activeTabIndicator"
-                    className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent to-transparent"
+                    className={`absolute bottom-0 left-0 right-0 h-px ${
+                      isDark 
+                        ? 'bg-gradient-to-r from-transparent via-accent to-transparent' 
+                        : 'bg-gradient-to-r from-transparent via-[#1a3a6e] to-transparent'
+                    }`}
                     transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
                   />
                 )}
@@ -53,11 +64,15 @@ export default function TabSection({ activeTab, setActiveTab }: TabSectionProps)
 
           {/* Mini brand */}
           <div className="hidden lg:flex items-center gap-3">
-            <span className="text-cream/20 text-xs uppercase tracking-[0.2em] font-light">
+            <span className={`text-xs uppercase tracking-[0.2em] font-light ${
+              isDark ? 'text-cream/20' : 'text-[#0a1628]/20'
+            }`}>
               Fisify × Medicus
             </span>
-            <div className="w-6 h-6 border border-accent/20 flex items-center justify-center">
-              <span className="font-display text-accent text-xs">F</span>
+            <div className={`w-6 h-6 border flex items-center justify-center ${
+              isDark ? 'border-accent/20' : 'border-[#1a3a6e]/20'
+            }`}>
+              <span className={`font-display text-xs ${isDark ? 'text-accent' : 'text-[#1a3a6e]'}`}>F</span>
             </div>
           </div>
         </div>

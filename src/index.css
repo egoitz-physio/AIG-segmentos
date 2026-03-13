@@ -6,15 +6,27 @@
 @tailwind utilities;
 
 :root {
-  /* Medicus-inspired deep blue palette */
-  --color-surface: #0a1628; /* Deep navy - main background */
-  --color-surface-dark: #060f1d; /* Even darker navy */
-  --color-surface-elevated: #101f38; /* Elevated navy */
-  --color-accent: #c9a96e; /* Champagne gold - luxury accent */
+  /* Dark mode (default) - Medicus-inspired deep blue */
+  --color-surface: #0a1628;
+  --color-surface-dark: #060f1d;
+  --color-surface-elevated: #0d1a2e;
+  --color-accent: #c9a96e;
   --color-accent-light: #e0c99a;
-  --color-medicus-blue: #1a3a6e; /* Medicus brand blue */
-  --color-cream: #f5f2ed;
-  --noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  --color-text: #f5f2ed;
+  --color-text-muted: rgba(245, 242, 237, 0.5);
+  --color-border: rgba(245, 242, 237, 0.1);
+}
+
+.light {
+  /* Light mode */
+  --color-surface: #faf9f7;
+  --color-surface-dark: #f0eeeb;
+  --color-surface-elevated: #ffffff;
+  --color-accent: #1a3a6e;
+  --color-accent-light: #2a4a7e;
+  --color-text: #0a1628;
+  --color-text-muted: rgba(10, 22, 40, 0.6);
+  --color-border: rgba(10, 22, 40, 0.1);
 }
 
 html {
@@ -23,17 +35,18 @@ html {
 }
 
 body {
-  background: linear-gradient(180deg, #0a1628 0%, #060f1d 100%);
-  color: #f5f2ed;
+  background: var(--color-surface);
+  color: var(--color-text);
   font-family: 'Outfit', system-ui, sans-serif;
   font-weight: 300;
   letter-spacing: 0.01em;
   min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
   background-color: rgba(201, 169, 110, 0.3);
-  color: #c9a96e;
+  color: var(--color-accent);
 }
 
 /* Typography Classes */
@@ -47,7 +60,7 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #c9a96e 0%, #e0c99a 50%, #c9a96e 100%);
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 50%, var(--color-accent) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -60,14 +73,22 @@ body {
   text-wrap: balance;
 }
 
+/* Theme-aware colors */
+.bg-surface { background-color: var(--color-surface); }
+.bg-surface-dark { background-color: var(--color-surface-dark); }
+.bg-surface-elevated { background-color: var(--color-surface-elevated); }
+.text-main { color: var(--color-text); }
+.text-muted { color: var(--color-text-muted); }
+.border-subtle { border-color: var(--color-border); }
+
 /* Elegant Buttons */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 1rem 2.5rem;
-  background-color: #c9a96e;
-  color: #0a1628;
+  background-color: var(--color-accent);
+  color: var(--color-surface);
   font-family: 'Outfit', sans-serif;
   font-weight: 500;
   font-size: 0.8rem;
@@ -77,8 +98,8 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: #e0c99a;
-  box-shadow: 0 0 40px -10px rgba(201, 169, 110, 0.5);
+  background-color: var(--color-accent-light);
+  box-shadow: 0 0 40px -10px var(--color-accent);
   transform: translateY(-2px);
 }
 
@@ -87,8 +108,8 @@ body {
   align-items: center;
   justify-content: center;
   padding: 1rem 2.5rem;
-  border: 1px solid rgba(245, 242, 237, 0.2);
-  color: #f5f2ed;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
   font-family: 'Outfit', sans-serif;
   font-weight: 400;
   font-size: 0.8rem;
@@ -98,11 +119,11 @@ body {
 }
 
 .btn-ghost:hover {
-  border-color: #c9a96e;
-  color: #c9a96e;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
-/* Section label - refined */
+/* Section label */
 .section-label {
   display: inline-flex;
   align-items: center;
@@ -113,16 +134,15 @@ body {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.25em;
-  color: rgba(245, 242, 237, 0.5);
-  border: 1px solid rgba(245, 242, 237, 0.1);
-  background: rgba(26, 58, 110, 0.2);
-  border-radius: 0;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-elevated);
 }
 
 /* Nav link */
 .nav-link {
   position: relative;
-  color: rgba(245, 242, 237, 0.5);
+  color: var(--color-text-muted);
   font-family: 'Outfit', sans-serif;
   font-size: 0.7rem;
   font-weight: 400;
@@ -132,7 +152,7 @@ body {
 }
 
 .nav-link:hover {
-  color: #f5f2ed;
+  color: var(--color-text);
 }
 
 .nav-link::after {
@@ -142,7 +162,7 @@ body {
   left: 0;
   width: 0;
   height: 1px;
-  background-color: #c9a96e;
+  background-color: var(--color-accent);
   transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -150,26 +170,30 @@ body {
   width: 100%;
 }
 
-/* Stat value - elegant */
+/* Stat value */
 .stat-value {
   font-family: 'Philosopher', Georgia, serif;
   font-weight: 700;
-  color: #c9a96e;
+  color: var(--color-accent);
   font-variant-numeric: tabular-nums;
 }
 
-/* Noise overlay */
+/* Noise overlay - only in dark mode */
 .noise {
   position: fixed;
   inset: 0;
   z-index: 50;
   pointer-events: none;
   opacity: 0.015;
-  background-image: var(--noise);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   background-repeat: repeat;
 }
 
-/* Glow spot - blue tinted */
+.light .noise {
+  opacity: 0.01;
+}
+
+/* Glow effects */
 .glow-spot {
   position: absolute;
   border-radius: 9999px;
@@ -177,7 +201,10 @@ body {
   background: radial-gradient(circle, rgba(26, 58, 110, 0.3) 0%, transparent 70%);
 }
 
-/* Gold glow for accents */
+.light .glow-spot {
+  background: radial-gradient(circle, rgba(26, 58, 110, 0.08) 0%, transparent 70%);
+}
+
 .glow-gold {
   position: absolute;
   border-radius: 9999px;
@@ -185,27 +212,24 @@ body {
   background: radial-gradient(circle, rgba(201, 169, 110, 0.1) 0%, transparent 70%);
 }
 
-/* Elegant divider */
-.divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(245, 242, 237, 0.1), transparent);
+.light .glow-gold {
+  background: radial-gradient(circle, rgba(201, 169, 110, 0.15) 0%, transparent 70%);
 }
 
-/* Custom scrollbar - refined */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a1628;
+  background: var(--color-surface);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c9a96e;
+  background: var(--color-accent);
   border-radius: 2px;
 }
 
-/* No scrollbar utility */
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -218,36 +242,32 @@ body {
 /* Focus styles */
 *:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 1px #c9a96e;
+  box-shadow: 0 0 0 1px var(--color-accent);
 }
 
-/* Smooth image transitions */
-img {
-  transition: opacity 0.6s ease, transform 0.6s ease;
+/* Card styles */
+.card-surface {
+  background-color: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
 }
 
-/* Card hover effect */
-.card-elegant {
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  background: linear-gradient(180deg, rgba(16, 31, 56, 0.5) 0%, rgba(10, 22, 40, 0.8) 100%);
-  border: 1px solid rgba(245, 242, 237, 0.05);
+/* Theme toggle button */
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.card-elegant:hover {
-  transform: translateY(-4px);
-  border-color: rgba(201, 169, 110, 0.2);
-  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
-}
-
-/* Surface backgrounds */
-.bg-surface {
-  background-color: #0a1628;
-}
-
-.bg-surface-dark {
-  background-color: #060f1d;
-}
-
-.bg-surface-elevated {
-  background-color: #101f38;
+.theme-toggle:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
