@@ -100,7 +100,7 @@ export default function ResultsTab({ isDark: _isDark }: ResultsTabProps) {
               {[
                 { icon: <Building2 size={16} />, label: 'Plan', value: 'Colectivos' },
                 { icon: <Users size={16} />, label: 'Población objetivo', value: '600 colaboradores de Medicus' },
-                { icon: <Monitor size={16} />, label: 'Plataforma digital', value: 'Estar Bien' },
+                { icon: <Monitor size={16} />, label: 'Plataforma digital', value: 'Fisify' },
                 { icon: <Calendar size={16} />, label: 'Duración', value: '2,5 meses' },
               ].map((item, i) => (
                 <motion.div
@@ -137,7 +137,7 @@ export default function ResultsTab({ isDark: _isDark }: ResultsTabProps) {
               {[
                 { icon: <Building2 size={16} />, label: 'Plan', value: 'Salud Individual' },
                 { icon: <Stethoscope size={16} />, label: 'Población objetivo', value: '15 kinesiólogos prestadores de la red + Afiliados bajo tratamiento kinesiológico' },
-                { icon: <Monitor size={16} />, label: 'Plataforma digital', value: 'FisifyStudio' },
+                { icon: <Monitor size={16} />, label: 'Plataforma digital', value: 'FisifyPro' },
                 { icon: <Calendar size={16} />, label: 'Duración', value: '2 meses' },
               ].map((item, i) => (
                 <motion.div
@@ -349,32 +349,21 @@ export default function ResultsTab({ isDark: _isDark }: ResultsTabProps) {
               <p className="text-[#0a1628]/50 text-sm font-light leading-relaxed mb-5">
                 Continuidad en el uso más allá del impulso inicial. Los colaboradores encontraron valor real en los contenidos.
               </p>
-              {/* Mini adoption chart */}
-              <div className="flex items-end justify-between gap-2 h-20 mb-2">
-                {[
-                  { week: 'S1', percent: 28 },
-                  { week: 'S2', percent: 49 },
-                  { week: 'S3', percent: 64 },
-                  { week: 'S4', percent: 78 },
-                  { week: 'S5', percent: 91 },
-                  { week: 'S6', percent: 100 },
-                ].map((item, i) => (
-                  <div key={item.week} className="flex-1 flex flex-col items-center h-full">
-                    <div className="flex-1 w-full flex items-end">
-                      <motion.div
-                        initial={{ scaleY: 0 }}
-                        whileInView={{ scaleY: 1 }}
-                        transition={{ duration: 0.6, delay: i * 0.08 }}
-                        viewport={{ once: true }}
-                        style={{ height: `${item.percent}%`, transformOrigin: 'bottom' }}
-                        className="w-full bg-gradient-to-t from-[#1a3a6e] to-[#3d5a8a] rounded-sm"
-                      />
-                    </div>
-                    <span className="text-[9px] text-[#0a1628]/20 mt-1">{item.week}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="flex items-baseline justify-between pt-2 border-t border-[#0a1628]/[0.04]">
+              {/* Usage graph */}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="rounded-xl overflow-hidden bg-[#faf9f7] border border-[#0a1628]/[0.04] p-3"
+              >
+                <p className="text-[9px] text-[#0a1628]/30 uppercase tracking-[0.1em] mb-2">Uso recurrente semanal</p>
+                <img
+                  src="/images/grafico_escalado.webp"
+                  alt="Gráfico de uso recurrente"
+                  className="w-full h-auto"
+                />
+              </motion.div>
+              <div className="flex items-baseline justify-between pt-3 mt-3 border-t border-[#0a1628]/[0.04]">
                 <span className="text-xl font-bold text-[#1a3a6e] tracking-tight">160</span>
                 <span className="text-[10px] text-[#0a1628]/30 uppercase tracking-wider">usuarios activos</span>
               </div>
@@ -540,26 +529,29 @@ export default function ResultsTab({ isDark: _isDark }: ResultsTabProps) {
           subtitle="Los pilotos dejan tres certezas que orientan la hoja de ruta conjunta."
         />
 
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="space-y-6">
           {[
             {
               num: '01',
-              title: 'Adopción validada',
-              desc: 'Los asegurados de Medicus integran la solución en su día a día.',
+              title: 'Prevención y bienestar: adopción y valor demostrado',
+              desc: 'El modelo encaja en el día a día del asegurado como herramienta preventiva y de bienestar, con un uso recurrente y una valoración muy positiva por parte de los colaboradores.',
+              aprendizaje: 'Para sostener la adopción y mantener ratios de hábitos en el piloto, es necesario activar campañas constantes, junto con estrategias de gamificación que impulsen una alta adherencia y refuercen el uso periódico.',
               icon: <Zap size={24} />,
               gradient: 'from-[#1a3a6e] to-[#2a4a7e]',
             },
             {
               num: '02',
-              title: 'Valor en salud',
-              desc: 'Es posible activar hábitos saludables de forma digital.',
+              title: 'Rehabilitación de pacientes: buena aceptación y adherencia',
+              desc: 'Los pacientes se activan, muestran una elevada satisfacción. El modelo híbrido mejora la accesibilidad y la adherencia al tratamiento.',
+              aprendizaje: 'Es clave reforzar el seguimiento y la personalización del tratamiento, combinando el soporte digital con puntos de contacto clínico, para maximizar la adherencia sostenida y asegurar mejores resultados en la recuperación.',
               icon: <Heart size={24} />,
               gradient: 'from-[#c9a96e] to-[#d4b87e]',
             },
             {
               num: '03',
-              title: 'Satisfacción excepcional',
-              desc: 'Puntuaciones 9+/10 reflejan el estándar Medicus.',
+              title: 'Adopción de fisioterapeutas: principal palanca de escalado',
+              desc: 'El modelo es clínicamente viable, pero la adopción profesional requiere acciones específicas.',
+              aprendizaje: 'Es clave trabajar la integración y el acompañamiento al fisioterapeuta: diseñar un plan para la adopción con incentivos, acciones formativas, seguimiento exhaustivo y soporte continuo para un uso recurrente en la práctica clínica.',
               icon: <Lightbulb size={24} />,
               gradient: 'from-[#4caf50] to-[#66bb6a]',
             },
@@ -570,14 +562,22 @@ export default function ResultsTab({ isDark: _isDark }: ResultsTabProps) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white rounded-3xl p-8 relative overflow-hidden min-h-[220px] flex flex-col"
+              className="bg-white rounded-3xl p-8 relative overflow-hidden"
             >
               <span className="text-[6rem] font-bold text-[#0a1628]/[0.03] absolute -top-2 right-4 leading-none select-none">{item.num}</span>
-              <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center text-white mb-5`}>
-                {item.icon}
+              <div className="flex items-start gap-6">
+                <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center text-white shrink-0`}>
+                  {item.icon}
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-lg font-semibold text-[#0a1628] mb-3">{item.title}</h4>
+                  <p className="text-[#0a1628]/60 text-sm font-light leading-relaxed mb-5">{item.desc}</p>
+                  <div className="bg-[#0a1628]/[0.03] rounded-2xl p-5 border border-[#0a1628]/[0.05]">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-[#c9a96e] font-medium mb-2 block">Aprendizaje</span>
+                    <p className="text-[#0a1628]/70 text-sm font-light leading-relaxed">{item.aprendizaje}</p>
+                  </div>
+                </div>
               </div>
-              <h4 className="text-lg font-semibold text-[#0a1628] mb-2">{item.title}</h4>
-              <p className="text-[#0a1628]/50 text-sm font-light leading-relaxed flex-1">{item.desc}</p>
             </motion.div>
           ))}
         </div>
