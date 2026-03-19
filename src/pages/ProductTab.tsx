@@ -530,14 +530,14 @@ export default function ProductTab({ isDark }: ProductTabProps) {
                           {feature.text}
                         </span>
                       </div>
-                      {feature.image && (
+                      {'image' in feature && feature.image && (
                         <div className={`rounded-lg overflow-hidden border ${borderColor} mt-3 ml-5`}>
-                          <img src={feature.image} alt={feature.text} className="w-full h-auto" />
+                          <img src={(feature as { image: string }).image} alt={feature.text} className="w-full h-auto" />
                         </div>
                       )}
-                      {feature.video && (
+                      {'video' in feature && feature.video && (
                         <div className={`rounded-lg overflow-hidden border ${borderColor} mt-3 ml-5`}>
-                          <video src={feature.video} autoPlay loop muted playsInline className="w-full h-auto" />
+                          <video src={(feature as { video: string }).video} autoPlay loop muted playsInline className="w-full h-auto" />
                         </div>
                       )}
                     </motion.div>
