@@ -54,7 +54,6 @@ export default function ProductTab({ isDark }: ProductTabProps) {
       quarter: 'Q1 2026',
       status: 'current' as const,
       features: [
-        { name: 'BodyOS 1.0', detail: 'Test de fuerza y movilidad para detectar áreas de mejora. Dashboard con métricas de uso, satisfacción, zonas de dolor y adherencia para el equipo de Medicus' },
         { name: 'FisifyOne — 1 to 1', detail: 'Kinesiólogo asignado con chat directo, plan de prevención y seguimiento semanal proactivo' },
         { name: 'Gamificación', detail: 'Puntos acumulables y canjeables en sorteos mensuales. Fisify gestiona el envío de los premios' },
       ],
@@ -102,10 +101,10 @@ export default function ProductTab({ isDark }: ProductTabProps) {
       subtitle: 'En tiempo real',
       body: 'Incorporamos tecnología de visión artificial y modelos avanzados de aprendizaje capaces de analizar cómo el afiliado realiza los ejercicios en tiempo real. El sistema no solo corrige la ejecución, sino que proporciona un feedback claro y comprensible, explicando los errores, sus posibles causas y cómo mejorarlos. Además, identifica patrones de movimiento, limitaciones o desequilibrios que permiten ajustar automáticamente el programa de ejercicios.',
       impacts: [
-        { label: 'Mejora de la calidad del ejercicio', desc: 'asegura una correcta ejecución sin necesidad de supervisión presencial' },
-        { label: 'Mayor adherencia', desc: 'el feedback inmediato aumenta la confianza y el compromiso del afiliado' },
-        { label: 'Personalización continua', desc: 'el sistema adapta los programas en base al comportamiento real del usuario' },
-        { label: 'Mayor precisión diagnóstica', desc: 'permite detectar limitaciones y desequilibrios de forma objetiva' },
+        { label: 'Seguridad al hacer ejercicio', desc: 'asegura una correcta ejecución sin necesidad de supervisión presencial' },
+        { label: 'Análisis de movimiento preciso', desc: 'el feedback inmediato aumenta la confianza y el compromiso del afiliado' },
+        { label: 'Mejora de la técnica en el ejercicio', desc: 'el sistema corrige y guía la ejecución en tiempo real para maximizar resultados' },
+        { label: 'Mayor precisión adaptativa de los ejercicios', desc: 'el sistema adapta los programas en base al comportamiento real del usuario' },
       ],
     },
   ]
@@ -466,9 +465,9 @@ export default function ProductTab({ isDark }: ProductTabProps) {
             {
               quarter: 'Q2 2026',
               features: [
+                'BodyOS 1.0 con integración de wearables',
                 'Mayor humanización del journey del afiliado con kinesiólogos',
                 'Mejoras continuas en FisifyStudio',
-                'Integración de wearables',
               ],
             },
             {
@@ -479,7 +478,7 @@ export default function ProductTab({ isDark }: ProductTabProps) {
                 video: '/images/gym-compressed.mp4',
               },
               features: [
-                'Agentes interactivos conversacionales',
+                'Aurya conversacional',
                 'Algoritmia de Aurya para FisifyStudio',
                 'Comunidad',
               ],
@@ -487,6 +486,7 @@ export default function ProductTab({ isDark }: ProductTabProps) {
             {
               quarter: 'Q4 2026',
               features: [
+                'BodyOS 2.0',
                 'Integración de historial clínico',
                 'Visión artificial en tiempo real',
               ],
