@@ -100,6 +100,9 @@ export default function ProductTab({ isDark }: ProductTabProps) {
       title: 'Movimiento guiado con visión artificial',
       subtitle: 'En tiempo real',
       body: 'Incorporamos tecnología de visión artificial y modelos avanzados de aprendizaje capaces de analizar cómo el afiliado realiza los ejercicios en tiempo real. El sistema no solo corrige la ejecución, sino que proporciona un feedback claro y comprensible, explicando los errores, sus posibles causas y cómo mejorarlos. Además, identifica patrones de movimiento, limitaciones o desequilibrios que permiten ajustar automáticamente el programa de ejercicios.',
+      showcase: ['/images/vision-ai.png'],
+      video: '/images/vision-ai.mp4',
+      videoLabel: 'Ver demo',
       impacts: [
         { label: 'Seguridad al hacer ejercicio', desc: 'asegura una correcta ejecución sin necesidad de supervisión presencial' },
         { label: 'Análisis de movimiento preciso', desc: 'el feedback inmediato aumenta la confianza y el compromiso del afiliado' },
@@ -275,7 +278,7 @@ export default function ProductTab({ isDark }: ProductTabProps) {
                       >
                         <Play size={14} />
                         <span className="text-[11px] uppercase tracking-[0.2em] font-medium">
-                          Ver ejemplo test
+                          {dev.videoLabel || 'Ver ejemplo test'}
                         </span>
                       </button>
                     )}
