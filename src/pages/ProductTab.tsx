@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
-import { ArrowRight, Scan, Eye, User, Activity, Play, X } from 'lucide-react'
+import { ArrowRight, Scan, Eye, User, Play, X } from 'lucide-react'
 
 interface ProductTabProps {
   isDark: boolean
@@ -468,30 +468,27 @@ export default function ProductTab({ isDark }: ProductTabProps) {
             {
               quarter: 'Q2 2026',
               features: [
-                'BodyOS 1.0 con integración de wearables',
-                'Mayor humanización del journey del afiliado con kinesiólogos',
-                'Mejoras continuas en FisifyStudio',
+                { text: 'Visión artificial con modelo 3 Triangles', image: '/images/vision-ai.png' },
+                { text: 'BodyOS 1.0 con integración de wearables' },
+                { text: 'Mayor humanización del journey del afiliado con kinesiólogos' },
+                { text: 'Mejoras continuas en FisifyStudio' },
               ],
             },
             {
               quarter: 'Q3 2026',
-              highlight: {
-                title: 'Ampliación de contenidos',
-                subtopics: ['Gym', 'Suelo pélvico', 'Y más'],
-                video: '/images/gym-compressed.mp4',
-              },
               features: [
-                'Aurya conversacional',
-                'Algoritmia de Aurya para FisifyStudio',
-                'Comunidad',
+                { text: 'Ampliación de contenidos: Gym, Suelo pélvico y más', video: '/images/gym-compressed.mp4' },
+                { text: 'Aurya conversacional' },
+                { text: 'Algoritmia de Aurya para FisifyStudio' },
+                { text: 'Comunidad' },
               ],
             },
             {
               quarter: 'Q4 2026',
               features: [
-                'BodyOS 2.0',
-                'Integración de historial clínico',
-                'Visión artificial en tiempo real',
+                { text: 'BodyOS 2.0' },
+                { text: 'Integración de historial clínico' },
+                { text: 'Visión artificial en tiempo real' },
               ],
             },
           ].map((phase, phaseIdx) => (
@@ -515,43 +512,6 @@ export default function ProductTab({ isDark }: ProductTabProps) {
                   </span>
                 </div>
 
-                {/* Highlight block — video + featured content */}
-                {'highlight' in phase && phase.highlight && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: phaseIdx * 0.1 + 0.1 }}
-                    viewport={{ once: true }}
-                    className="mb-8"
-                  >
-                    <h4 className={`font-display text-lg mb-3 ${textMain}`}>
-                      {phase.highlight.title}
-                    </h4>
-                    <div className={`flex flex-wrap gap-2 mb-5`}>
-                      {phase.highlight.subtopics.map((topic) => (
-                        <span
-                          key={topic}
-                          className={`text-[11px] uppercase tracking-[0.15em] px-3 py-1.5 ${
-                            isDark ? 'bg-accent/10 text-accent/80' : 'bg-[#1a3a6e]/10 text-[#1a3a6e]/80'
-                          }`}
-                        >
-                          {topic}
-                        </span>
-                      ))}
-                    </div>
-                    <div className={`rounded-lg overflow-hidden border ${borderColor}`}>
-                      <video
-                        src={phase.highlight.video}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="w-full h-auto"
-                      />
-                    </div>
-                  </motion.div>
-                )}
-
                 {/* Features list */}
                 <div className="space-y-5">
                   {phase.features.map((feature, featureIdx) => (
@@ -561,14 +521,25 @@ export default function ProductTab({ isDark }: ProductTabProps) {
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: phaseIdx * 0.1 + featureIdx * 0.06 + 0.15 }}
                       viewport={{ once: true }}
-                      className="flex items-start gap-3"
                     >
-                      <span className={`w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 ${isDark ? 'bg-accent/60' : 'bg-[#1a3a6e]/60'}`} />
-                      <span className={`text-sm font-light leading-relaxed ${
-                        isDark ? 'text-cream/80' : 'text-[#0a1628]/80'
-                      }`}>
-                        {feature}
-                      </span>
+                      <div className="flex items-start gap-3">
+                        <span className={`w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 ${isDark ? 'bg-accent/60' : 'bg-[#1a3a6e]/60'}`} />
+                        <span className={`text-sm font-light leading-relaxed ${
+                          isDark ? 'text-cream/80' : 'text-[#0a1628]/80'
+                        }`}>
+                          {feature.text}
+                        </span>
+                      </div>
+                      {feature.image && (
+                        <div className={`rounded-lg overflow-hidden border ${borderColor} mt-3 ml-5`}>
+                          <img src={feature.image} alt={feature.text} className="w-full h-auto" />
+                        </div>
+                      )}
+                      {feature.video && (
+                        <div className={`rounded-lg overflow-hidden border ${borderColor} mt-3 ml-5`}>
+                          <video src={feature.video} autoPlay loop muted playsInline className="w-full h-auto" />
+                        </div>
+                      )}
                     </motion.div>
                   ))}
                 </div>
