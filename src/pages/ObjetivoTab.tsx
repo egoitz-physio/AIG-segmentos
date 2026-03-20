@@ -106,98 +106,13 @@ export default function ObjetivoTab({ isDark: _isDark }: ObjetivoTabProps) {
 
 
       {/* ══════════════════════════════════════════════════ */}
-      {/*  SECTION 2 — SITUACIÓN ACTUAL                     */}
+      {/*  SECTION 2 — CAMBIO DE PARADIGMA                  */}
       {/* ══════════════════════════════════════════════════ */}
       <section className="mb-40">
         {/* Section header */}
-        <motion.div {...fadeUp} className="mb-20">
-          <div className="flex items-center gap-5 mb-8">
-            <span className="text-[10px] uppercase tracking-[0.3em] text-cream/50 font-medium">01</span>
-            <div className="flex-1 h-px bg-cream/[0.08]" />
-          </div>
-          <h3
-            className="text-3xl md:text-4xl lg:text-[2.8rem] font-light text-cream tracking-tight mb-4"
-            style={{ fontFamily: 'Outfit, sans-serif' }}
-          >
-            Situación actual
-          </h3>
-          <p className="text-lg text-cream/60 font-light">
-            Medicina prepagada en Argentina
-          </p>
-        </motion.div>
-
-        {/* Editorial cards */}
-        <div className="space-y-px">
-          {situacionCards.map((card, i) => (
-            <motion.div
-              key={card.num}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.12, duration: 0.7 }}
-              viewport={{ once: true, margin: '-40px' }}
-              className="group bg-[#0d1a2e]/50 border border-white/[0.06] p-8 md:p-10 lg:p-12 hover:bg-[#0d1a2e]/80 transition-all duration-500"
-            >
-              <div className="grid lg:grid-cols-12 gap-8 items-start">
-                {/* Number + icon */}
-                <div className="lg:col-span-1 flex items-center gap-4 lg:flex-col lg:items-start lg:gap-3">
-                  <span className="text-[11px] uppercase tracking-[0.25em] text-accent/80 font-medium">
-                    {card.num}
-                  </span>
-                  <span className="text-cream/50 group-hover:text-accent/70 transition-colors duration-500">
-                    {card.icon}
-                  </span>
-                </div>
-
-                {/* Title */}
-                <div className="lg:col-span-4">
-                  <h4
-                    className="text-xl lg:text-[1.35rem] text-cream font-normal leading-snug tracking-tight"
-                    style={{ fontFamily: 'Philosopher, Georgia, serif' }}
-                  >
-                    {card.title}
-                  </h4>
-                </div>
-
-                {/* Body */}
-                <div className="lg:col-span-7">
-                  <p className="text-[15px] text-cream/70 font-light leading-[1.8]">
-                    {card.body}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Concluding statement */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-16 lg:mt-20"
-        >
-          <div className="relative pl-8 border-l border-accent/30">
-            <p className="text-lg lg:text-xl text-cream/70 font-light leading-[1.7] max-w-4xl">
-              En un mercado con más competencia y más transparencia de precios, la prepaga necesita dejar
-              de ser{' '}
-              <span className="text-cream/60 italic">&lsquo;gestor de prestaciones&rsquo;</span> y convertirse en{' '}
-              <span className="text-accent font-normal">&lsquo;plataforma de salud cotidiana&rsquo;</span>:{' '}
-              prevención activa + acompañamiento continuo + evidencia de impacto{' '}
-              <span className="text-cream/55">(para retención y renovación)</span>.
-            </p>
-          </div>
-        </motion.div>
-      </section>
-
-
-      {/* ══════════════════════════════════════════════════ */}
-      {/*  SECTION 3 — CAMBIO DE PARADIGMA                  */}
-      {/* ══════════════════════════════════════════════════ */}
-      <section className="mb-32">
-        {/* Section header */}
         <motion.div {...fadeUp} className="mb-12">
           <div className="flex items-center gap-5 mb-8">
-            <span className="text-[10px] uppercase tracking-[0.3em] text-cream/50 font-medium">02</span>
+            <span className="text-[10px] uppercase tracking-[0.3em] text-cream/50 font-medium">01</span>
             <div className="flex-1 h-px bg-cream/[0.08]" />
           </div>
           <h3
@@ -302,6 +217,91 @@ export default function ObjetivoTab({ isDark: _isDark }: ObjetivoTabProps) {
             </div>
           </motion.div>
         </div>
+      </section>
+
+
+      {/* ══════════════════════════════════════════════════ */}
+      {/*  SECTION 3 — SITUACIÓN ACTUAL                     */}
+      {/* ══════════════════════════════════════════════════ */}
+      <section className="mb-32">
+        {/* Section header */}
+        <motion.div {...fadeUp} className="mb-20">
+          <div className="flex items-center gap-5 mb-8">
+            <span className="text-[10px] uppercase tracking-[0.3em] text-cream/50 font-medium">02</span>
+            <div className="flex-1 h-px bg-cream/[0.08]" />
+          </div>
+          <h3
+            className="text-3xl md:text-4xl lg:text-[2.8rem] font-light text-cream tracking-tight mb-4"
+            style={{ fontFamily: 'Outfit, sans-serif' }}
+          >
+            Situación actual
+          </h3>
+          <p className="text-lg text-cream/60 font-light">
+            Medicina prepagada en Argentina
+          </p>
+        </motion.div>
+
+        {/* Editorial cards */}
+        <div className="space-y-px">
+          {situacionCards.map((card, i) => (
+            <motion.div
+              key={card.num}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.12, duration: 0.7 }}
+              viewport={{ once: true, margin: '-40px' }}
+              className="group bg-[#0d1a2e]/50 border border-white/[0.06] p-8 md:p-10 lg:p-12 hover:bg-[#0d1a2e]/80 transition-all duration-500"
+            >
+              <div className="grid lg:grid-cols-12 gap-8 items-start">
+                {/* Number + icon */}
+                <div className="lg:col-span-1 flex items-center gap-4 lg:flex-col lg:items-start lg:gap-3">
+                  <span className="text-[11px] uppercase tracking-[0.25em] text-accent/80 font-medium">
+                    {card.num}
+                  </span>
+                  <span className="text-cream/50 group-hover:text-accent/70 transition-colors duration-500">
+                    {card.icon}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <div className="lg:col-span-4">
+                  <h4
+                    className="text-xl lg:text-[1.35rem] text-cream font-normal leading-snug tracking-tight"
+                    style={{ fontFamily: 'Philosopher, Georgia, serif' }}
+                  >
+                    {card.title}
+                  </h4>
+                </div>
+
+                {/* Body */}
+                <div className="lg:col-span-7">
+                  <p className="text-[15px] text-cream/70 font-light leading-[1.8]">
+                    {card.body}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Concluding statement */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 lg:mt-20"
+        >
+          <div className="relative pl-8 border-l border-accent/30">
+            <p className="text-lg lg:text-xl text-cream/70 font-light leading-[1.7] max-w-4xl">
+              En un mercado con más competencia y más transparencia de precios, la prepaga necesita dejar
+              de ser{' '}
+              <span className="text-cream/60 italic">&lsquo;gestor de prestaciones&rsquo;</span> y convertirse en{' '}
+              <span className="text-accent font-normal">&lsquo;plataforma de salud cotidiana&rsquo;</span>:{' '}
+              prevención activa + acompañamiento continuo + evidencia de impacto{' '}
+              <span className="text-cream/55">(para retención y renovación)</span>.
+            </p>
+          </div>
+        </motion.div>
       </section>
 
       {/* Footer mark */}
