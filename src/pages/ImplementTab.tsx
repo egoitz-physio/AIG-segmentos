@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 interface ImplementTabProps {
   isDark: boolean
+  clientName?: string
 }
 
 /* ─── Reusable fade-in variant ─── */
@@ -19,7 +20,7 @@ function Divider({ isDark }: { isDark: boolean }) {
   )
 }
 
-export default function ImplementTab({ isDark }: ImplementTabProps) {
+export default function ImplementTab({ isDark, clientName = 'Medicus' }: ImplementTabProps) {
   const [expandedPhase, setExpandedPhase] = useState<number | null>(0)
 
   const textMain = isDark ? 'text-cream' : 'text-[#0a1628]'
@@ -39,7 +40,7 @@ export default function ImplementTab({ isDark }: ImplementTabProps) {
       period: 'Abril — Junio',
       deliverables: 'Gobernanza, protocolos, activación, reporting base',
       actions: [
-        'Campaña multicanal: web Medicus + app + email + push (coordinado)',
+        `Campaña multicanal: web ${clientName} + app + email + push (coordinado)`,
         'Email marketing segmentado por perfil, dolor y objetivo',
         'Onboarding tutorial + "primer plan en 2 minutos"',
         'Primer ciclo de retos e incentivos (activación)',
@@ -55,7 +56,7 @@ export default function ImplementTab({ isDark }: ImplementTabProps) {
         'Plan anual de comunicación (campañas trimestrales)',
         'Segmentación avanzada: cohort por dolor, edad, plan, uso',
         'Campañas de reactivación: nudges + contenidos + webinars + sorteos e incentivos',
-        'Optimización del circuito de derivación a red Medicus',
+        `Optimización del circuito de derivación a red ${clientName}`,
       ],
     },
     {
@@ -92,7 +93,7 @@ export default function ImplementTab({ isDark }: ImplementTabProps) {
   const governance = [
     {
       area: 'Kick-off, implementación y seguimiento',
-      medicus: 'Rommy',
+      medicus: clientName,
       fisify: 'Customer Success Executive',
     },
     {
@@ -147,7 +148,7 @@ export default function ImplementTab({ isDark }: ImplementTabProps) {
             Hoja de ruta para escalar valor, adopción y resultados
           </h2>
           <p className={`text-xl lg:text-2xl font-light leading-relaxed max-w-3xl mt-6 ${textMuted}`}>
-            Plan de 24 meses para activar el servicio, optimizar su uso, convertirlo en una palanca comercial y consolidarlo como una capacidad estratégica dentro de Medicus.
+            Plan de 24 meses para activar el servicio, optimizar su uso, convertirlo en una palanca comercial y consolidarlo como una capacidad estratégica dentro de {clientName}.
           </p>
         </motion.div>
 
@@ -311,7 +312,7 @@ export default function ImplementTab({ isDark }: ImplementTabProps) {
             Modelo operativo
           </h2>
           <p className={`text-xl font-light leading-relaxed max-w-2xl mt-6 ${textMuted}`}>
-            Roles y responsabilidades claras entre Medicus y Fisify para una ejecución impecable.
+            Roles y responsabilidades claras entre {clientName} y Fisify para una ejecución impecable.
           </p>
         </motion.div>
 
@@ -329,7 +330,7 @@ export default function ImplementTab({ isDark }: ImplementTabProps) {
               <span className={`text-xs uppercase tracking-[0.2em] font-medium ${textMuted}`}>Área</span>
             </div>
             <div className={`col-span-3 p-6 lg:p-8 border-l ${borderColor}`}>
-              <span className={`text-xs uppercase tracking-[0.2em] font-medium ${textAccent}`}>Medicus</span>
+              <span className={`text-xs uppercase tracking-[0.2em] font-medium ${textAccent}`}>{clientName}</span>
             </div>
             <div className={`col-span-4 p-6 lg:p-8 border-l ${borderColor}`}>
               <span className={`text-xs uppercase tracking-[0.2em] font-medium ${textAccent}`}>Fisify</span>
@@ -443,7 +444,7 @@ export default function ImplementTab({ isDark }: ImplementTabProps) {
         <motion.div {...fadeUp} className="mb-20">
           <span className="section-label mb-10 inline-block">Inversión</span>
           <h2 className={`heading-display text-display-lg max-w-4xl ${textMain}`}>
-            Una inversión diseñada para escalar junto a Medicus
+            Una inversión diseñada para escalar junto a {clientName}
           </h2>
           <p className={`text-xl font-light leading-relaxed max-w-3xl mt-6 ${textMuted}`}>
             Una propuesta económica pensada para acompañar el volumen, facilitar la adopción y consolidar una relación de largo plazo.
@@ -497,7 +498,7 @@ export default function ImplementTab({ isDark }: ImplementTabProps) {
                       <span className={`text-[10px] uppercase tracking-[0.15em] px-2 py-1 font-medium ${
                         isDark ? 'bg-accent/15 text-accent' : 'bg-[#1a3a6e]/15 text-[#1a3a6e]'
                       }`}>
-                        Medicus
+                        {clientName}
                       </span>
                     )}
                   </div>
@@ -532,7 +533,7 @@ export default function ImplementTab({ isDark }: ImplementTabProps) {
                 <span className={`text-base font-light ${textMuted}`}>por licencia / año</span>
               </div>
 
-              {/* Medicus price */}
+              {/* Client price */}
               <div className={`relative border overflow-hidden ${
                 isDark ? 'border-accent/20 bg-accent/[0.04]' : 'border-[#1a3a6e]/20 bg-[#1a3a6e]/[0.04]'
               } p-10 lg:p-12`}>
@@ -540,7 +541,7 @@ export default function ImplementTab({ isDark }: ImplementTabProps) {
                 <div className={`absolute top-0 left-0 right-0 h-px ${isDark ? 'bg-accent' : 'bg-[#1a3a6e]'}`} />
 
                 <span className={`text-xs uppercase tracking-[0.2em] block mb-6 ${textAccent}`}>
-                  Pricing Medicus
+                  Pricing {clientName}
                 </span>
                 <div className="flex items-baseline gap-1 mb-3">
                   <span className={`stat-value text-5xl lg:text-6xl tracking-tight`}>1,10</span>

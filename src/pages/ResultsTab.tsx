@@ -3,6 +3,7 @@ import { Users, LogIn, Star, Activity, Dumbbell, CheckCircle2, Stethoscope, User
 
 interface ResultsTabProps {
   isDark: boolean
+  clientName?: string
 }
 
 /* ─── Section header ─── */
@@ -41,7 +42,7 @@ function ProgramBadge({ program }: { program: 'prevencion' | 'rehabilitacion' })
   )
 }
 
-export default function ResultsTab({ isDark: _isDark }: ResultsTabProps) {
+export default function ResultsTab({ isDark: _isDark, clientName = 'Medicus' }: ResultsTabProps) {
 
   return (
     <div className="bg-[#faf9f7] min-h-screen relative">
@@ -67,7 +68,7 @@ export default function ResultsTab({ isDark: _isDark }: ResultsTabProps) {
             className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#0a1628]/[0.04] text-[#0a1628]/60 text-[11px] uppercase tracking-[0.15em] font-medium rounded-full mb-6"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#1a3a6e]" />
-            Medicus · Presentación de resultados 2025
+            {clientName} · Presentación de resultados 2025
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -99,7 +100,7 @@ export default function ResultsTab({ isDark: _isDark }: ResultsTabProps) {
             <div className="mt-8 space-y-5">
               {[
                 { icon: <Building2 size={16} />, label: 'Plan', value: 'Colectivos' },
-                { icon: <Users size={16} />, label: 'Población objetivo', value: '600 colaboradores de Medicus' },
+                { icon: <Users size={16} />, label: 'Población objetivo', value: `600 colaboradores de ${clientName}` },
                 { icon: <Monitor size={16} />, label: 'Plataforma digital', value: 'Fisify' },
                 { icon: <Calendar size={16} />, label: 'Duración', value: '2,5 meses' },
               ].map((item, i) => (
@@ -676,7 +677,7 @@ export default function ResultsTab({ isDark: _isDark }: ResultsTabProps) {
           viewport={{ once: true }}
           className="mt-20 pt-12 border-t border-[#0a1628]/[0.06] flex items-center justify-between"
         >
-          <span className="text-[11px] text-[#0a1628]/25 tracking-[0.15em] uppercase">Fisify · Medicus</span>
+          <span className="text-[11px] text-[#0a1628]/25 tracking-[0.15em] uppercase">Fisify · {clientName}</span>
           <span className="text-[11px] text-[#0a1628]/25 tracking-[0.15em] uppercase">Resultados confidenciales · 2025</span>
         </motion.div>
 

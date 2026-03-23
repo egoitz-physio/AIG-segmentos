@@ -3,6 +3,7 @@ import { AlertTriangle, Scale, Smartphone, X, Check } from 'lucide-react'
 
 interface ObjetivoTabProps {
   isDark: boolean
+  clientName?: string
 }
 
 /* ─── Fade-in preset ─── */
@@ -12,7 +13,7 @@ const fadeUp = {
   viewport: { once: true, margin: '-40px' },
 }
 
-export default function ObjetivoTab({ isDark: _isDark }: ObjetivoTabProps) {
+export default function ObjetivoTab({ isDark: _isDark, clientName = 'Medicus' }: ObjetivoTabProps) {
 
   /* ══════════════════════════════════════════════════ */
   /*  SITUACIÓN ACTUAL — DATA                          */
@@ -54,7 +55,7 @@ export default function ObjetivoTab({ isDark: _isDark }: ObjetivoTabProps) {
     { label: 'Acceso universal', desc: 'Acceso desde cualquier lugar y dispositivo: baja fricción, más adopción.' },
     { label: 'Intervención temprana', desc: 'Primer nivel de acompañamiento sin desplazamientos: reduce barreras y acelera intervención temprana.' },
     { label: 'Personalización real', desc: 'Programas personalizados por perfil y objetivo: evita el enfoque genérico.' },
-    { label: 'Propuesta diferencial', desc: 'Medicus pasa a tener una propuesta diferencial: prevención medible, no solo cobertura.' },
+    { label: 'Propuesta diferencial', desc: `${clientName} pasa a tener una propuesta diferencial: prevención medible, no solo cobertura.` },
   ]
 
   return (
@@ -91,7 +92,7 @@ export default function ObjetivoTab({ isDark: _isDark }: ObjetivoTabProps) {
             Consolidar <span className="text-gradient font-medium">Fisify</span> como pilar de la{' '}
             <span className="text-cream font-medium">prevención activa</span> de dolencias
             musculoesqueléticas (MSK) para los asegurados de{' '}
-            <span className="text-gradient font-medium">Medicus</span>.
+            <span className="text-gradient font-medium">{clientName}</span>.
           </h2>
         </motion.div>
 
@@ -131,7 +132,7 @@ export default function ObjetivoTab({ isDark: _isDark }: ObjetivoTabProps) {
           {...fadeUp}
           className="text-lg text-cream/70 font-light leading-[1.8] max-w-3xl mb-20"
         >
-          Fisify permite que Medicus evolucione de un modelo donde el afiliado &lsquo;aparece&rsquo; cuando hay
+          Fisify permite que {clientName} evolucione de un modelo donde el afiliado &lsquo;aparece&rsquo; cuando hay
           dolor, a uno donde la prepaga acompaña y previene de forma continua. El plan deja de ser una
           promesa y pasa a ser un valor tangible en el día a día.
         </motion.p>
@@ -312,7 +313,7 @@ export default function ObjetivoTab({ isDark: _isDark }: ObjetivoTabProps) {
         className="pt-12 border-t border-cream/[0.08] flex items-center justify-between"
       >
         <span className="text-[11px] text-cream/30 tracking-[0.15em] uppercase">
-          Fisify · Medicus
+          Fisify · {clientName}
         </span>
         <span className="text-[11px] text-cream/30 tracking-[0.15em] uppercase">
           Propuesta estratégica · 2025

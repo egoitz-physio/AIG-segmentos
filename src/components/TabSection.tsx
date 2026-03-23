@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
-import type { TabId } from '../App'
+import type { TabId } from './ClientPresentationApp'
 
 interface TabSectionProps {
   activeTab: TabId
@@ -22,6 +22,10 @@ const allTabs = [
 
 export default function TabSection({ activeTab, setActiveTab, isDark, clientLogo = '/images/medicus-logo-white.png', clientName = 'Medicus', visibleTabs }: TabSectionProps) {
   const [isSticky, setIsSticky] = useState(false)
+  const showClientLogo = Boolean(clientLogo)
+  const useBrandFilter = !clientLogo.includes('logo-aig')
+  const stickyClientSize = clientLogo.includes('logo-aig') ? 'h-5 opacity-80' : 'h-4 opacity-80'
+  const miniClientSize = clientLogo.includes('logo-aig') ? 'h-4 opacity-40' : 'h-3 opacity-40'
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,11 +71,17 @@ export default function TabSection({ activeTab, setActiveTab, isDark, clientLogo
               className={`h-5 opacity-80 ${isDark ? 'brightness-0 invert' : 'brightness-0'}`}
             />
             <span className={`text-xs ${isDark ? 'text-cream/30' : 'text-[#0a1628]/30'}`}>×</span>
-            <img
-              src={clientLogo}
-              alt={clientName}
-              className={`h-4 opacity-80 ${isDark ? 'brightness-0 invert' : 'brightness-0'}`}
-            />
+            {showClientLogo ? (
+              <img
+                src={clientLogo}
+                alt={clientName}
+                className={`${useBrandFilter ? (isDark ? 'brightness-0 invert' : 'brightness-0') : ''} ${stickyClientSize}`}
+              />
+            ) : (
+              <span className={`text-xs uppercase tracking-[0.28em] ${isDark ? 'text-cream/70' : 'text-[#0a1628]/70'}`}>
+                {clientName}
+              </span>
+            )}
           </motion.div>
 
           {/* Tabs */}
@@ -130,11 +140,17 @@ export default function TabSection({ activeTab, setActiveTab, isDark, clientLogo
               className={`h-4 opacity-40 ${isDark ? 'brightness-0 invert' : 'brightness-0'}`}
             />
             <span className={`text-xs font-light ${isDark ? 'text-cream/20' : 'text-[#0a1628]/20'}`}>×</span>
-            <img
-              src={clientLogo}
-              alt={clientName}
-              className={`h-3 opacity-40 ${isDark ? 'brightness-0 invert' : 'brightness-0'}`}
-            />
+            {showClientLogo ? (
+              <img
+                src={clientLogo}
+                alt={clientName}
+                className={`${useBrandFilter ? (isDark ? 'brightness-0 invert' : 'brightness-0') : ''} ${miniClientSize}`}
+              />
+            ) : (
+              <span className={`text-[10px] uppercase tracking-[0.28em] ${isDark ? 'text-cream/20' : 'text-[#0a1628]/20'}`}>
+                {clientName}
+              </span>
+            )}
           </motion.div>
         </div>
       </div>

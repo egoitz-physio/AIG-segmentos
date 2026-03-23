@@ -2,9 +2,10 @@ import { motion } from 'framer-motion'
 
 interface ValueTabProps {
   isDark: boolean
+  clientName?: string
 }
 
-export default function ValueTab({ isDark: _isDark }: ValueTabProps) {
+export default function ValueTab({ isDark: _isDark, clientName = 'Medicus' }: ValueTabProps) {
   return (
     <div className="bg-[#faf9f7] min-h-screen relative">
       {/* Subtle grid lines background */}
@@ -39,7 +40,7 @@ export default function ValueTab({ isDark: _isDark }: ValueTabProps) {
           >
             Tres oportunidades estratégicas
             <br />
-            <span className="font-semibold">para redefinir el valor de Medicus</span>
+            <span className="font-semibold">para redefinir el valor de {clientName}</span>
           </h2>
         </motion.div>
 

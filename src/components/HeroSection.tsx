@@ -12,7 +12,7 @@ export default function HeroSection({ clientName = 'Medicus' }: HeroSectionProps
       <div className="absolute inset-0">
         <img
           src="/images/new-hero-2.png"
-          alt="Medicus Fisioterapia Digital"
+          alt={`${clientName} Fisioterapia Digital`}
           className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-tr from-[#060f1d] via-[#060f1d]/40 to-transparent" />

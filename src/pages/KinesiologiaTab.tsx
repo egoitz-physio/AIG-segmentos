@@ -3,10 +3,12 @@ import { useState } from 'react';
 
 interface KinesiologiaTabProps {
 	isDark: boolean;
+	clientName?: string;
 }
 
 export default function KinesiologiaTab({
 	isDark: _isDark,
+	clientName = 'Medicus',
 }: KinesiologiaTabProps) {
 	const [expandedPhase, setExpandedPhase] = useState<number | null>(0);
 
@@ -21,7 +23,7 @@ export default function KinesiologiaTab({
 				'Capacitación en FisifyStudio y onboarding del equipo',
 				'Incorporación de los primeros afiliados al programa',
 				'Recolección de primeras métricas de activación y uso',
-				'Adaptación FisifyPro a los requerimientos de los kinesiólogos de Medicus',
+				`Adaptación FisifyPro a los requerimientos de los kinesiólogos de ${clientName}`,
 			],
 		},
 		{
@@ -31,7 +33,7 @@ export default function KinesiologiaTab({
 			title: 'Optimización y expansión',
 			items: [
 				'Ajuste del programa en base a datos de adherencia',
-				'Revisiones quincenales de KPIs con el equipo Medicus',
+				`Revisiones quincenales de KPIs con el equipo ${clientName}`,
 				'Seguimiento mensual y visita presencial a los centros',
 				'Diseño conjunto del plan 2027',
 			],
@@ -44,7 +46,7 @@ export default function KinesiologiaTab({
 			items: [
 				'Evaluación de resultados clínicos y económicos',
 				'Definición del modelo de escalado para toda la red',
-				'Informe ejecutivo final para Medicus',
+				`Informe ejecutivo final para ${clientName}`,
 				'Propuesta de renovación y expansión a nuevas especialidades',
 			],
 		},
@@ -125,7 +127,7 @@ export default function KinesiologiaTab({
 						adopción profesional requiere un periodo de adaptación y acciones
 						específicas de integración y acompañamiento. Para ello, proponemos
 						un piloto estructurado a 12 meses que abarque la rehabilitación
-						kinesiológica integrando la red prestacional de Medicus con la
+						kinesiológica integrando la red prestacional de {clientName} con la
 						tecnología digital de Fisify.
 					</p>
 				</motion.div>
@@ -157,7 +159,7 @@ export default function KinesiologiaTab({
 
 						<p className='text-[17px] text-[#0a1628]/70 font-light leading-[1.8] max-w-3xl mb-16'>
 							El modelo híbrido combina la atención presencial del kinesiólogo
-							de la red Medicus con el seguimiento digital continuo a través de
+							de la red {clientName} con el seguimiento digital continuo a través de
 							la plataforma Fisify. El afiliado recibe lo mejor de ambos mundos:
 							el vínculo clínico con su profesional y la accesibilidad de una
 							herramienta digital disponible 24/7.
@@ -268,7 +270,7 @@ export default function KinesiologiaTab({
 									</h4>
 								</div>
 								<span className='text-[11px] uppercase tracking-[0.15em] text-[#1a3a6e] font-semibold block mb-5'>
-									Dashboard Medicus
+									Dashboard {clientName}
 								</span>
 								<div className='space-y-4'>
 									{[
@@ -470,7 +472,7 @@ export default function KinesiologiaTab({
 
 						<p className='text-[17px] text-[#0a1628]/70 font-light leading-[1.8] max-w-3xl mb-16'>
 							Durante los 12 meses del piloto, Fisify asume la responsabilidad
-							operativa del modelo digital, liberando al equipo de Medicus de la
+							operativa del modelo digital, liberando al equipo de {clientName} de la
 							carga de implementación y garantizando resultados desde el primer
 							mes.
 						</p>
@@ -480,7 +482,7 @@ export default function KinesiologiaTab({
 								{
 									num: 'a',
 									title: 'Account Manager',
-									body: 'Account Manager para Medicus con conocimiento profundo del negocio, los afiliados y la red prestacional.',
+									body: `Account Manager para ${clientName} con conocimiento profundo del negocio, los afiliados y la red prestacional.`,
 								},
 								{
 									num: 'b',

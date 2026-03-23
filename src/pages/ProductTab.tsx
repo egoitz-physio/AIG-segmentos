@@ -4,6 +4,7 @@ import { Scan, Eye, User, Play, X } from 'lucide-react'
 
 interface ProductTabProps {
   isDark: boolean
+  clientName?: string
 }
 
 /* ─── Fade-in wrapper with stagger ─── */

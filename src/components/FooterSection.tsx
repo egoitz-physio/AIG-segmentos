@@ -5,6 +5,9 @@ interface FooterSectionProps {
 }
 
 export default function FooterSection({ isDark, clientName = 'Medicus', clientLogo = '/images/medicus-logo-white.png' }: FooterSectionProps) {
+  const showClientLogo = Boolean(clientLogo)
+  const useBrandFilter = !clientLogo.includes('logo-aig')
+  const clientLogoSize = clientLogo.includes('logo-aig') ? 'h-6 transition-all' : 'h-5 transition-all'
   const textMuted = isDark ? 'text-cream/70' : 'text-[#0a1628]/70'
   const textAccent = isDark ? 'text-accent' : 'text-[#1a3a6e]'
   const borderColor = isDark ? 'border-white/10' : 'border-black/10'
@@ -23,11 +26,17 @@ export default function FooterSection({ isDark, clientName = 'Medicus', clientLo
                 className={`h-6 transition-all ${isDark ? 'brightness-0 invert' : 'brightness-0'}`}
               />
               <span className={`text-xs font-light ${isDark ? 'text-cream/50' : 'text-[#0a1628]/50'}`}>×</span>
-              <img
-                src={clientLogo}
-                alt={clientName}
-                className={`h-5 transition-all ${isDark ? 'brightness-0 invert' : 'brightness-0'}`}
-              />
+              {showClientLogo ? (
+                <img
+                  src={clientLogo}
+                  alt={clientName}
+                  className={`${useBrandFilter ? (isDark ? 'brightness-0 invert' : 'brightness-0') : ''} ${clientLogoSize}`}
+                />
+              ) : (
+                <span className={`text-sm uppercase tracking-[0.3em] ${isDark ? 'text-cream/70' : 'text-[#0a1628]/70'}`}>
+                  {clientName}
+                </span>
+              )}
             </div>
             <p className={`text-sm leading-relaxed mb-8 max-w-sm font-light ${textMuted}`}>
               Transformando la experiencia de salud de los asegurados de {clientName} a través de fisioterapia digital de excelencia.

@@ -2,9 +2,10 @@ import { motion } from 'framer-motion'
 
 interface BienestarTabProps {
   isDark: boolean
+  clientName?: string
 }
 
-export default function BienestarTab({ isDark }: BienestarTabProps) {
+export default function BienestarTab({ isDark, clientName = 'Medicus' }: BienestarTabProps) {
   const cardBg = isDark ? 'bg-[#0d1a2e]' : 'bg-white'
   const borderColor = isDark ? 'border-white/5' : 'border-black/5'
   const textMain = isDark ? 'text-cream' : 'text-[#0a1628]'
@@ -99,7 +100,7 @@ export default function BienestarTab({ isDark }: BienestarTabProps) {
     },
     {
       phase: 'Gestión dedicada',
-      items: ['Account Manager para Medicus', 'Equipo de kinesiólogos asignado', 'Tiempos de respuesta optimizados']
+      items: [`Account Manager para ${clientName}`, 'Equipo de kinesiólogos asignado', 'Tiempos de respuesta optimizados']
     },
   ]
 
@@ -304,7 +305,7 @@ export default function BienestarTab({ isDark }: BienestarTabProps) {
       {/* Beneficios estratégicos */}
       <section className="mb-32">
         <div className="text-center mb-16">
-          <span className="section-label mb-6 inline-block">Tres palancas para Medicus</span>
+          <span className="section-label mb-6 inline-block">Tres palancas para {clientName}</span>
           <h2 className={`heading-display text-4xl lg:text-5xl ${textMain}`}>Beneficios estratégicos</h2>
         </div>
 

@@ -1,18 +1,28 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import Navigation from '../components/Navigation'
-import HeroSection from '../components/HeroSection'
-import TabSection from '../components/TabSection'
-import ProductTab from './ProductTab'
-import FooterSection from '../components/FooterSection'
+import Navigation from './Navigation'
+import HeroSection from './HeroSection'
+import TabSection from './TabSection'
+import FooterSection from './FooterSection'
+import ResultsTab from '../pages/ResultsTab'
+import ProductTab from '../pages/ProductTab'
+import ValueTab from '../pages/ValueTab'
+import ImplementTab from '../pages/ImplementTab'
+import KinesiologiaTab from '../pages/KinesiologiaTab'
+import ObjetivoTab from '../pages/ObjetivoTab'
 
-import type { TabId } from '../components/ClientPresentationApp'
+export type TabId = 'objetivo' | 'results' | 'product' | 'value' | 'kinesiologia' | 'implement'
 
-const CLIENT_NAME = 'Omint'
-const CLIENT_LOGO = '/images/logo-omint.png'
+interface ClientPresentationAppProps {
+  clientName: string
+  clientLogo?: string
+}
 
-export default function OmintApp() {
-  const [activeTab, setActiveTab] = useState<TabId>('product')
+export default function ClientPresentationApp({
+  clientName,
+  clientLogo,
+}: ClientPresentationAppProps) {
+  const [activeTab, setActiveTab] = useState<TabId>('objetivo')
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -42,16 +52,15 @@ export default function OmintApp() {
         <div className="glow-gold w-[400px] h-[400px] top-1/3 right-1/4" />
       </div>
 
-      <Navigation scrolled={scrolled} clientName={CLIENT_NAME} clientLogo={CLIENT_LOGO} />
-      <HeroSection clientName={CLIENT_NAME} />
+      <Navigation scrolled={scrolled} clientName={clientName} clientLogo={clientLogo} />
+      <HeroSection clientName={clientName} />
 
       <TabSection
         activeTab={activeTab}
         setActiveTab={handleTabChange}
         isDark={true}
-        clientName={CLIENT_NAME}
-        clientLogo={CLIENT_LOGO}
-        visibleTabs={['product']}
+        clientName={clientName}
+        clientLogo={clientLogo}
       />
 
       <main id="content" className="relative">
@@ -63,12 +72,17 @@ export default function OmintApp() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            <ProductTab isDark={true} />
+            {activeTab === 'objetivo' && <ObjetivoTab isDark={true} clientName={clientName} />}
+            {activeTab === 'results' && <ResultsTab isDark={true} clientName={clientName} />}
+            {activeTab === 'product' && <ProductTab isDark={true} clientName={clientName} />}
+            {activeTab === 'value' && <ValueTab isDark={true} clientName={clientName} />}
+            {activeTab === 'implement' && <ImplementTab isDark={true} clientName={clientName} />}
+            {activeTab === 'kinesiologia' && <KinesiologiaTab isDark={true} clientName={clientName} />}
           </motion.div>
         </AnimatePresence>
       </main>
 
-      <FooterSection isDark={true} clientName={CLIENT_NAME} clientLogo={CLIENT_LOGO} />
+      <FooterSection isDark={true} clientName={clientName} clientLogo={clientLogo} />
     </div>
   )
 }

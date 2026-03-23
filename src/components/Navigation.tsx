@@ -7,6 +7,12 @@ interface NavigationProps {
 }
 
 export default function Navigation({ scrolled, clientName = 'Medicus', clientLogo = '/images/medicus-logo-white.png' }: NavigationProps) {
+  const showClientLogo = Boolean(clientLogo)
+  const useBrandFilter = !clientLogo.includes('logo-aig')
+  const clientLogoSize = clientLogo.includes('logo-aig')
+    ? (scrolled ? 'h-5 opacity-90' : 'h-6 opacity-100')
+    : (scrolled ? 'h-[14px] opacity-90' : 'h-[18px] opacity-100')
+
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}
@@ -24,23 +30,31 @@ export default function Navigation({ scrolled, clientName = 'Medicus', clientLog
         }`}>
           {/* Logos - Centered with scale animation */}
           <a href="/" className="flex items-center gap-4 group">
-            <img 
-              src="/images/fisify-logo-white.png" 
-              alt="Fisify" 
-              className={`brightness-0 invert transition-all duration-500 ease-out group-hover:opacity-70 ${
-                scrolled ? 'h-5 opacity-90' : 'h-6 opacity-100'
-              }`}
-            />
+              <img 
+                src="/images/fisify-logo-white.png" 
+                alt="Fisify" 
+                className={`brightness-0 invert transition-all duration-500 ease-out group-hover:opacity-70 ${
+                  scrolled ? 'h-5 opacity-90' : 'h-6 opacity-100'
+                }`}
+              />
             <span className={`font-light text-white/30 transition-all duration-500 ${
               scrolled ? 'text-[8px]' : 'text-[10px]'
             }`}>×</span>
-            <img
-              src={clientLogo}
-              alt={clientName}
-              className={`brightness-0 invert transition-all duration-500 ease-out group-hover:opacity-70 ${
-                scrolled ? 'h-[14px] opacity-90' : 'h-[18px] opacity-100'
-              }`}
-            />
+            {showClientLogo ? (
+              <img
+                src={clientLogo}
+                alt={clientName}
+                className={`${useBrandFilter ? 'brightness-0 invert' : ''} transition-all duration-500 ease-out group-hover:opacity-70 ${
+                  clientLogoSize
+                }`}
+              />
+            ) : (
+              <span className={`text-white tracking-[0.35em] font-light uppercase transition-all duration-500 ${
+                scrolled ? 'text-[11px] opacity-90' : 'text-sm opacity-100'
+              }`}>
+                {clientName}
+              </span>
+            )}
           </a>
         </div>
       </nav>
