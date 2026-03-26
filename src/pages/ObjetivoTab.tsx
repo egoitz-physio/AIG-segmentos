@@ -138,7 +138,7 @@ export default function ObjetivoTab({ isDark: _isDark, clientName = 'Prudential'
                 Conclusión estratégica
               </div>
               <h4 className="text-2xl lg:text-3xl font-light text-cream tracking-tight">
-              Fisify convierte la fisioterapia digital en un servicio que el asegurado entiende, usa y valora en su día a día.
+              Fisify convierte la fisioterapia digital en un servicio que el asegurado entiende, usa y valora cada día.
               </h4>
               <p className="text-cream/60 font-light leading-relaxed mt-4 max-w-4xl">
                 La combinación de videollamadas, chat, corrección en tiempo real y valoraciones con IA crea una experiencia más humana,
