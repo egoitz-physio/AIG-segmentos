@@ -8,8 +8,9 @@ interface FooterSectionProps {
 export default function FooterSection({ isDark, clientName = 'Medicus', clientLogo = '/images/medicus-logo-white.png', brand = 'standard' }: FooterSectionProps) {
   const showClientLogo = Boolean(clientLogo)
   const isZurichLogo = clientLogo.includes('logo-zurich')
-  const useBrandFilter = !clientLogo.includes('logo-aig') && !isZurichLogo
-  const clientLogoSize = clientLogo.includes('logo-aig') ? 'h-6 transition-all' : isZurichLogo ? 'h-8 transition-all' : 'h-5 transition-all'
+  const isPrudentialLogo = clientLogo.includes('logo-prudential')
+  const useBrandFilter = !clientLogo.includes('logo-aig') && !isZurichLogo && !isPrudentialLogo
+  const clientLogoSize = clientLogo.includes('logo-aig') ? 'h-6 transition-all' : isZurichLogo ? 'h-8 transition-all' : isPrudentialLogo ? 'h-8 transition-all' : 'h-5 transition-all'
   const textMuted = isDark ? 'text-cream/70' : 'text-[#0a1628]/70'
   const textAccent = isDark ? 'text-accent' : 'text-[#1a3a6e]'
   const borderColor = isDark ? 'border-white/10' : 'border-black/10'
