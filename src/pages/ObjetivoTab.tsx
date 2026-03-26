@@ -15,7 +15,7 @@ const fadeUp = {
 const humanFeatures = [
   'Videollamadas con fisioterapeutas para valoraciones personalizadas',
   'Chat directo con fisioterapeutas para seguimiento y resolución de dudas',
-  'Acompañamiento humano para sostener la adherencia y la confianza',
+  'Acompañamiento humano para sostener la adherencia, la confianza y el uso recurrente',
 ]
 
 const aiFeatures = [
@@ -27,7 +27,7 @@ const aiFeatures = [
 const useCases = [
   {
     title: 'Prevención',
-    body: 'Programas personalizados para anticipar lesiones y mejorar la calidad de vida.',
+    body: 'Programas personalizados para anticipar lesiones, activar hábitos y mejorar la calidad de vida.',
   },
   {
     title: 'Tratamiento',
@@ -46,11 +46,12 @@ export default function ObjetivoTab({ isDark: _isDark, clientName = 'Prudential'
         <motion.div {...fadeUp} className="mb-10">
           <span className="section-label mb-8 inline-block">Propuesta de colaboración</span>
           <h2 className="heading-display text-display-lg max-w-5xl text-cream">
-            Servicio de fisioterapia digital para <span className="text-gradient">{clientName}</span>
+            Prevención y bienestar digital para <span className="text-gradient">{clientName}</span>
           </h2>
           <p className="text-lg lg:text-xl font-light leading-relaxed max-w-4xl mt-6 text-cream/65">
-            La plataforma líder de fisioterapia digital que fusiona la IA con la cercanía humana.
-            Fisify personaliza la experiencia y el equipo de fisioterapeutas acompaña a cada persona.
+            Fisify fusiona la IA con la cercanía humana para que el asegurado no asocie el seguro solo a los siniestros,
+            sino a una experiencia activa de prevención, bienestar y uso cotidiano. Así, Fisify actúa como un
+            tangibilizador de valor dentro del producto.
           </p>
         </motion.div>
 
@@ -103,10 +104,10 @@ export default function ObjetivoTab({ isDark: _isDark, clientName = 'Prudential'
           <div className="flex-1 h-px bg-cream/[0.08]" />
         </div>
         <h3 className="text-3xl md:text-4xl lg:text-[2.8rem] font-light text-cream tracking-tight mb-4" style={{ fontFamily: 'Outfit, sans-serif' }}>
-          Desde la prevención hasta el tratamiento
+          Desde la prevención hasta el bienestar diario
         </h3>
         <p className="text-lg text-cream/60 font-light max-w-3xl mb-10">
-          Una solución 360º para una vida activa y sin dolor.
+          Una solución 360º para una vida activa, útil y vinculada al valor del seguro.
         </p>
 
         <div className="grid md:grid-cols-3 gap-4">
@@ -142,7 +143,7 @@ export default function ObjetivoTab({ isDark: _isDark, clientName = 'Prudential'
               </h4>
               <p className="text-cream/60 font-light leading-relaxed mt-4 max-w-4xl">
                 La combinación de videollamadas, chat, corrección en tiempo real y valoraciones con IA crea una experiencia más humana,
-                más precisa y más consistente con la promesa de cuidado de {clientName}.
+                más precisa y más consistente con una póliza que quiere ser útil todos los días y demostrar su valor en la rutina.
               </p>
             </div>
           </div>

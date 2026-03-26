@@ -42,13 +42,13 @@ export default function ResultsTab({ isDark: _isDark, clientName = 'Prudential' 
         <motion.div {...fadeUp} className="mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/8 text-[11px] uppercase tracking-[0.22em] text-[#9cc2ff] font-medium mb-6">
             <ShieldCheck size={12} />
-            {clientName} + Mercado Libre · Propuesta de colaboración
+            {clientName} + Mercado Libre · Prevención y bienestar
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-[3.8rem] font-light text-cream tracking-tight leading-[1.05] max-w-5xl" style={{ fontFamily: 'Outfit, sans-serif' }}>
-            Fisify se integra como servicio en el nuevo producto de <span className="font-semibold text-[#9cc2ff]">{clientName}</span>
+            Fisify se integra como servicio de prevención y bienestar en el nuevo producto de <span className="font-semibold text-[#9cc2ff]">{clientName}</span>
           </h2>
           <p className="text-lg lg:text-xl text-cream/60 font-light leading-relaxed max-w-4xl mt-6">
-            Tratamiento de dolencias físicas, prevención de lesiones y adquisición de hábitos saludables que mejoren la calidad de vida.
+            Tratamiento de dolencias físicas, prevención de lesiones y adquisición de hábitos saludables que mejoren la calidad de vida y tangibilicen el valor del seguro.
           </p>
         </motion.div>
 
@@ -57,17 +57,17 @@ export default function ResultsTab({ isDark: _isDark, clientName = 'Prudential' 
             {
               icon: <Package size={18} />,
               title: 'Servicio 360º',
-              body: 'Desde la prevención hasta el tratamiento: una propuesta completa para una vida activa y sin dolor.',
+              body: 'Desde la prevención hasta el tratamiento: una propuesta completa para una vida activa, útil y cotidiana.',
             },
             {
               icon: <Users size={18} />,
-              title: 'Acceso inmediato',
+              title: 'Uso diario',
               body: 'El valor se activa dentro del nuevo seguro con una experiencia simple, digital y acompañada.',
             },
             {
               icon: <PlusCircle size={18} />,
               title: 'Valor visible',
-              body: 'La fisioterapia digital se convierte en un elemento tangible que refuerza el producto y la marca.',
+              body: 'La fisioterapia digital se convierte en un elemento tangible que refuerza el producto, la marca y la recurrencia.',
             },
           ].map((card) => (
             <div key={card.title} className="rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6 lg:p-7">
@@ -164,7 +164,7 @@ export default function ResultsTab({ isDark: _isDark, clientName = 'Prudential' 
           </div>
           <p className="text-cream/70 font-light leading-relaxed max-w-5xl">
             El objetivo no es sumar una funcionalidad aislada, sino convertir la fisioterapia digital en un servicio que mejore la propuesta de valor,
-            refuerce la percepción del nuevo seguro y facilite una conversación comercial más potente con clientes y asegurados.
+            refuerce la percepción del nuevo seguro y ayude a que el asegurado lo use y lo valore cada día.
           </p>
         </div>
       </section>

@@ -28,7 +28,7 @@ const valueCards = [
     items: [
       'Tangibiliza el valor del seguro en el día a día.',
       'Impulsa el uso de la app y el ecosistema.',
-      'Refuerza una propuesta útil y recurrente.',
+      'Refuerza una propuesta útil, recurrente y preventiva.',
     ],
   },
   {
@@ -86,11 +86,11 @@ export default function ValueTab({ isDark: _isDark, clientName = 'Prudential' }:
         <div className="grid lg:grid-cols-12 gap-8">
           <div className="lg:col-span-7">
             <h3 className="text-3xl md:text-4xl font-light text-cream tracking-tight mb-6" style={{ fontFamily: 'Outfit, sans-serif' }}>
-              Diferenciación y negocio
+              Prevención que se ve y se usa
             </h3>
             <p className="text-lg text-cream/65 font-light leading-[1.85] max-w-2xl">
               La propuesta no solo mejora la experiencia del asegurado. También hace más visible el valor de la cobertura,
-              fortalece el argumento comercial y aporta una capa de prevención medible que acompaña la estrategia de crecimiento.
+              fortalece el argumento comercial y hace que el seguro pase de ser reactivo a formar parte de la rutina diaria.
             </p>
           </div>
           <div className="lg:col-span-5 rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6">
@@ -125,7 +125,7 @@ export default function ValueTab({ isDark: _isDark, clientName = 'Prudential' }:
             </h4>
             <p className="text-cream/60 font-light leading-relaxed mt-4 max-w-4xl">
               Esa recurrencia es la que sostiene la percepción de valor, mejora la relación con el cliente y ayuda a que la promesa de salud se entienda
-              en el día a día, no solo en el momento de la contratación.
+              en el día a día, no solo en el momento de la contratación. Fisify funciona así como un tangibilizador de valor.
             </p>
           </div>
         </div>

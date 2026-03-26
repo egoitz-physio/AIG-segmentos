@@ -40,10 +40,10 @@ export default function ImplementTab({ isDark: _isDark, clientName = 'Prudential
           <div className="flex-1 border-t border-white/10" />
         </div>
         <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-light text-cream tracking-tight leading-[1.08] max-w-5xl" style={{ fontFamily: 'Outfit, sans-serif' }}>
-          Inteligencia de datos + equipo experto para escalar la propuesta con <span className="font-semibold text-[#9cc2ff]">{clientName}</span>
+          Inteligencia de datos + equipo experto para escalar una propuesta de prevención y bienestar con <span className="font-semibold text-[#9cc2ff]">{clientName}</span>
         </h2>
         <p className="text-lg lg:text-xl text-cream/60 font-light leading-relaxed max-w-4xl mt-6">
-          La ejecución necesita una cadencia clara, un equipo con experiencia y una lectura de datos constante para transformar la adopción en resultados.
+          La ejecución necesita una cadencia clara, un equipo con experiencia y una lectura de datos constante para transformar la adopción en hábitos y valor percibido.
         </p>
       </motion.div>
 

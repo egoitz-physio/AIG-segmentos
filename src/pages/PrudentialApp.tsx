@@ -18,17 +18,17 @@ export default function PrudentialApp() {
         eyebrow: 'Propuesta de colaboración',
         title: (
           <>
-            Servicio de fisioterapia digital para <span className="font-semibold">Prudential</span>
+            Prevención, bienestar y valor cotidiano para <span className="font-semibold">Prudential</span>
           </>
         ),
         description:
-          'La plataforma líder de fisioterapia digital que fusiona la IA con la cercanía humana para prevenir, tratar y acompañar a los asegurados.',
+          'Fisify convierte la fisioterapia digital en una experiencia de prevención y bienestar que el asegurado usa en su día a día y asocia al valor del seguro.',
         image: '/images/new-hero-2.png',
         imageAlt: 'Prudential Fisioterapia Digital',
       }}
       footer={{
         description:
-          'Cuida el activo más importante de tu aseguradora con una propuesta de salud cotidiana, medible y escalable.',
+          'Fisify ayuda a tangibilizar el valor del seguro con una experiencia de prevención y bienestar que el asegurado utiliza en su día a día.',
         bottomText: '© 2026 Fisify. Propuesta de colaboración para Prudential.',
       }}
     />
