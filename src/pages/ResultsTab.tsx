@@ -26,6 +26,15 @@ const advancedPlan = [
   'Modelo de gestión dedicada + inteligencia de datos',
 ]
 
+const pricing = [
+  { insured: '50.000', essential: '1.98€', advanced: '4.48€' },
+  { insured: '100.000', essential: '1.76€', advanced: '4.09€' },
+  { insured: '200.000', essential: '1.55€', advanced: '3.80€' },
+  { insured: '300.000', essential: '1.34€', advanced: '3.59€' },
+  { insured: '400.000', essential: '1.20€', advanced: '3.39€' },
+  { insured: '+500.000', essential: '1.08€', advanced: '3.27€' },
+]
+
 export default function ResultsTab({ isDark: _isDark, clientName = 'Prudential' }: ResultsTabProps) {
   return (
     <div className="relative">
@@ -91,6 +100,21 @@ export default function ResultsTab({ isDark: _isDark, clientName = 'Prudential' 
               ))}
             </div>
 
+            <div className="rounded-2xl border border-[#9cc2ff]/15 bg-[#9cc2ff]/8 p-4 mb-5">
+              <div className="text-xs uppercase tracking-[0.18em] text-[#9cc2ff] mb-2">Coste / licencia / año</div>
+              <div className="text-3xl font-light text-cream">1.08€ - 1.98€</div>
+              <p className="text-xs text-cream/50 mt-2">*IVA incluido, según número de asegurados</p>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {pricing.map((tier) => (
+                <div key={tier.insured} className="rounded-2xl border border-white/8 bg-white/[0.03] p-3">
+                  <div className="text-[10px] uppercase tracking-[0.18em] text-cream/40 mb-2">{tier.insured}</div>
+                  <div className="text-sm text-[#9cc2ff] font-medium">{tier.essential}</div>
+                </div>
+              ))}
+            </div>
+
           </motion.div>
 
           <motion.div {...fadeUp} transition={{ delay: 0.1 }} className="rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(13,26,46,0.92),rgba(10,21,36,0.82))] p-7 lg:p-8">
@@ -108,6 +132,21 @@ export default function ResultsTab({ isDark: _isDark, clientName = 'Prudential' 
               {advancedPlan.map((item) => (
                 <div key={item} className="rounded-2xl border border-white/8 bg-[#09162a]/60 px-4 py-3 text-cream/75 font-light text-sm">
                   {item}
+                </div>
+              ))}
+            </div>
+
+            <div className="rounded-2xl border border-[#9cc2ff]/15 bg-[#9cc2ff]/8 p-4 mb-5">
+              <div className="text-xs uppercase tracking-[0.18em] text-[#9cc2ff] mb-2">Coste / licencia / año</div>
+              <div className="text-3xl font-light text-cream">3.27€ - 4.48€</div>
+              <p className="text-xs text-cream/50 mt-2">*IVA incluido, según número de asegurados</p>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {pricing.map((tier) => (
+                <div key={tier.insured} className="rounded-2xl border border-white/8 bg-white/[0.03] p-3">
+                  <div className="text-[10px] uppercase tracking-[0.18em] text-cream/40 mb-2">{tier.insured}</div>
+                  <div className="text-sm text-[#9cc2ff] font-medium">{tier.advanced}</div>
                 </div>
               ))}
             </div>
