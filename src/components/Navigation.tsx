@@ -18,7 +18,7 @@ export default function Navigation({ scrolled, clientName = 'Medicus', clientLog
       : isZurichLogo
         ? (scrolled ? 'h-7 opacity-95' : 'h-8 opacity-100')
       : isPrudentialLogo
-        ? (scrolled ? 'h-8 opacity-95' : 'h-9 opacity-100')
+        ? (scrolled ? 'h-9 opacity-95' : 'h-10 opacity-100')
       : (scrolled ? 'h-[14px] opacity-90' : 'h-[18px] opacity-100')
   const isZurich = brand === 'zurich'
 
