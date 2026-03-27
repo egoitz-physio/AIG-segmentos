@@ -21,6 +21,7 @@ export default function FooterSection({
   const isPrudentialLogo = clientLogo.includes('logo-prudential')
   const useBrandFilter = !clientLogo.includes('logo-aig') && !isZurichLogo && !isPrudentialLogo && !isAxaKeraltyLogo
   const clientLogoSize = clientLogo.includes('logo-aig') ? 'h-6 transition-all' : isZurichLogo ? 'h-8 transition-all' : isPrudentialLogo ? 'h-8 transition-all' : isAxaKeraltyLogo ? 'h-6 transition-all' : 'h-5 transition-all'
+  const clientLogoColor = isAxaKeraltyLogo ? 'brightness-0 invert' : useBrandFilter ? (isDark ? 'brightness-0 invert' : 'brightness-0') : ''
   const textMuted = isDark ? 'text-cream/70' : 'text-[#0a1628]/70'
   const textAccent = isDark ? 'text-accent' : 'text-[#1a3a6e]'
   const borderColor = isDark ? 'border-white/10' : 'border-black/10'
@@ -46,7 +47,7 @@ export default function FooterSection({
                 <img
                   src={clientLogo}
                   alt={clientName}
-                  className={`${useBrandFilter ? (isDark ? 'brightness-0 invert' : 'brightness-0') : ''} ${clientLogoSize}`}
+                  className={`${clientLogoColor} ${clientLogoSize}`}
                 />
               ) : (
                 <span className={`text-sm uppercase tracking-[0.3em] ${isDark ? 'text-cream/70' : 'text-[#0a1628]/70'}`}>

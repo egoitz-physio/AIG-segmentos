@@ -29,6 +29,7 @@ export default function TabSection({ activeTab, setActiveTab, isDark, clientLogo
   const useBrandFilter = !clientLogo.includes('logo-aig') && !isZurichLogo && !isPrudentialLogo && !isAxaKeraltyLogo
   const stickyClientSize = clientLogo.includes('logo-aig') ? 'h-5 opacity-80' : isZurichLogo ? 'h-7 opacity-90' : isPrudentialLogo ? 'h-8 opacity-90' : isAxaKeraltyLogo ? 'h-5 opacity-85' : 'h-4 opacity-80'
   const miniClientSize = clientLogo.includes('logo-aig') ? 'h-4 opacity-40' : isZurichLogo ? 'h-6 opacity-50' : isPrudentialLogo ? 'h-6 opacity-55' : isAxaKeraltyLogo ? 'h-4 opacity-45' : 'h-3 opacity-40'
+  const clientLogoColor = isAxaKeraltyLogo ? 'brightness-0 invert' : useBrandFilter ? (isDark ? 'brightness-0 invert' : 'brightness-0') : ''
   const isZurich = brand === 'zurich'
 
   useEffect(() => {
@@ -81,7 +82,7 @@ export default function TabSection({ activeTab, setActiveTab, isDark, clientLogo
               <img
                 src={clientLogo}
                 alt={clientName}
-                className={`${useBrandFilter ? (isDark ? 'brightness-0 invert' : 'brightness-0') : ''} ${stickyClientSize}`}
+                className={`${clientLogoColor} ${stickyClientSize}`}
               />
             ) : (
               <span className={`text-xs uppercase tracking-[0.28em] ${isDark ? 'text-cream/70' : 'text-[#0a1628]/70'}`}>
@@ -152,7 +153,7 @@ export default function TabSection({ activeTab, setActiveTab, isDark, clientLogo
               <img
                 src={clientLogo}
                 alt={clientName}
-                className={`${useBrandFilter ? (isDark ? 'brightness-0 invert' : 'brightness-0') : ''} ${miniClientSize}`}
+                className={`${clientLogoColor} ${miniClientSize}`}
               />
             ) : (
               <span className={`text-[10px] uppercase tracking-[0.28em] ${isDark ? 'text-cream/20' : 'text-[#0a1628]/20'}`}>

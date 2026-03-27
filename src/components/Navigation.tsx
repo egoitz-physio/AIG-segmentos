@@ -23,6 +23,7 @@ export default function Navigation({ scrolled, clientName = 'Medicus', clientLog
       : isAxaKeraltyLogo
         ? (scrolled ? 'h-6 opacity-95' : 'h-7 opacity-100')
       : (scrolled ? 'h-[14px] opacity-90' : 'h-[18px] opacity-100')
+  const clientLogoColor = isAxaKeraltyLogo ? 'brightness-0 invert' : useBrandFilter ? 'brightness-0 invert' : ''
   const isZurich = brand === 'zurich'
 
   return (
@@ -58,7 +59,7 @@ export default function Navigation({ scrolled, clientName = 'Medicus', clientLog
               <img
                 src={clientLogo}
                 alt={clientName}
-                className={`${useBrandFilter ? 'brightness-0 invert' : ''} transition-all duration-500 ease-out group-hover:opacity-70 ${
+                className={`${clientLogoColor} transition-all duration-500 ease-out group-hover:opacity-70 ${
                   clientLogoSize
                 }`}
               />
