@@ -10,8 +10,8 @@ import {
   Workflow,
 } from 'lucide-react'
 
-const accent = '#00a0e6'
-const accentSoft = 'rgba(0, 160, 230, 0.14)'
+const accent = '#1399ff'
+const accentSoft = 'rgba(19, 153, 255, 0.18)'
 
 const sectionFade = {
   initial: { opacity: 0, y: 24 },
@@ -533,7 +533,7 @@ export default function AIGApp() {
 
           <div className="grid lg:grid-cols-12 gap-8">
             <motion.div {...sectionFade} className="lg:col-span-4">
-              <div className="sticky top-28 rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(0,160,230,0.14),rgba(255,255,255,0.03))] p-6 lg:p-8">
+              <div className="sticky top-28 rounded-[2rem] border border-white/8 p-6 lg:p-8" style={{ background: 'linear-gradient(180deg, rgba(19,153,255,0.20), rgba(255,255,255,0.03))' }}>
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-white/70">
                   <Globe2 size={12} style={{ color: accent }} />
                   Fisify siempre disponible - 24 / 7 / 365
@@ -587,12 +587,12 @@ export default function AIGApp() {
             transition={{ delay: 0.05 }}
             className="mt-8 rounded-[2rem] border p-6 lg:p-8"
             style={{
-              borderColor: 'rgba(0, 160, 230, 0.22)',
-              background: 'linear-gradient(135deg, rgba(0, 160, 230, 0.12), rgba(255, 255, 255, 0.04))',
+              borderColor: 'rgba(19, 153, 255, 0.24)',
+              background: 'linear-gradient(135deg, rgba(19, 153, 255, 0.18), rgba(255, 255, 255, 0.04))',
             }}
           >
             <div className="flex items-start gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border" style={{ borderColor: 'rgba(0, 160, 230, 0.22)', background: accentSoft, color: accent }}>
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border" style={{ borderColor: 'rgba(19, 153, 255, 0.24)', background: accentSoft, color: accent }}>
                 <ShieldCheck size={20} />
               </div>
               <div>
@@ -732,15 +732,15 @@ export default function AIGApp() {
 
           <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
             {pilotMetrics.map((metric) => (
-              <motion.article
-                key={metric.value}
-                {...sectionFade}
-                className="rounded-[1.6rem] border p-6"
-                style={{
-                  borderColor: 'rgba(0, 160, 230, 0.18)',
-                  background: 'linear-gradient(180deg, rgba(0, 160, 230, 0.12), rgba(255, 255, 255, 0.03))',
-                }}
-              >
+            <motion.article
+              key={metric.value}
+              {...sectionFade}
+              className="rounded-[1.6rem] border p-6"
+              style={{
+                  borderColor: 'rgba(19, 153, 255, 0.20)',
+                  background: 'linear-gradient(180deg, rgba(19, 153, 255, 0.14), rgba(255, 255, 255, 0.03))',
+              }}
+            >
                 <div className="text-4xl font-medium tracking-tight text-white" style={{ color: accent }}>
                   {metric.value}
                 </div>
@@ -777,12 +777,12 @@ export default function AIGApp() {
             {...sectionFade}
             className="rounded-[2.25rem] border p-7 lg:p-10"
             style={{
-              borderColor: 'rgba(0, 160, 230, 0.22)',
-              background: 'linear-gradient(135deg, rgba(0, 160, 230, 0.18), rgba(255, 255, 255, 0.04))',
+              borderColor: 'rgba(19, 153, 255, 0.24)',
+              background: 'linear-gradient(135deg, rgba(19, 153, 255, 0.22), rgba(255, 255, 255, 0.04))',
             }}
           >
             <div className="flex items-start gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border" style={{ borderColor: 'rgba(0, 160, 230, 0.25)', background: accentSoft, color: accent }}>
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border" style={{ borderColor: 'rgba(19, 153, 255, 0.25)', background: accentSoft, color: accent }}>
                 <Workflow size={20} />
               </div>
               <div className="max-w-5xl">
