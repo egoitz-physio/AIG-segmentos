@@ -83,7 +83,7 @@ const coverageCards = [
     coverage: 'Múltiples asegurados simultáneos',
     value: 'Atención simultánea ilimitada',
     body:
-      'Capacidad de atender a múltiples afectados a la vez sin colapsar. Al ser 100% digital, cada asegurado recibe su plan personalizado de forma independiente.',
+      'Pensado para accidentes en el entorno laboral de varios empleados a la vez. Fisify no solo da respuesta tras el siniestro, sino que también ofrece FisifyOffice y FisifyWork para activar pausas activas, prevenir lesiones y apoyar el cumplimiento de la NOM035 en México.',
   },
   {
     title: 'Accidente en viaje',
@@ -97,7 +97,7 @@ const coverageCards = [
     coverage: 'Transporte privado y público',
     value: 'Especialidad cervical y columna',
     body:
-      'Protocolo específico para lesiones cervicales y de columna, con foco en evitar dolor crónico y reclamaciones más costosas.',
+      'Además de los protocolos propios para accidentes de auto, Fisify incorpora prevención y bienestar para conductores que pasan largas horas al volante, con foco en cuello, espalda y fatiga muscular.',
   },
   {
     title: 'Accidente en viaje aéreo',
@@ -118,7 +118,7 @@ const coverageCards = [
     coverage: 'Enfermedad y accidente',
     value: 'Pre y post-alta hospitalaria',
     body:
-      'Fisioterapia respiratoria y de movilización temprana durante la hospitalización, más un protocolo completo de rehabilitación post-alta.',
+      'Fisify es el complemento ideal para seguir acompañando al asegurado cuando sale del hospital: ayuda a continuar la recuperación, reduce el riesgo de recaídas o recidivas y mantiene el apoyo en todo momento.',
   },
   {
     title: 'Enfermedades graves',
@@ -550,24 +550,30 @@ export default function AIGApp() {
                   key={card.title}
                   {...sectionFade}
                   transition={{ delay: index * 0.05 }}
-                  className="rounded-[1.8rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] p-5 lg:p-6"
+                  className="rounded-[2rem] border border-white/10 p-6 lg:p-7"
+                  style={{ background: 'linear-gradient(180deg, rgba(13,20,34,0.98), rgba(9,15,27,0.96))' }}
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <div className="text-[11px] uppercase tracking-[0.24em] text-white/45">Cobertura AIG</div>
-                      <h3 className="mt-2 text-2xl font-medium text-white">{card.title}</h3>
+                      <div className="text-[11px] uppercase tracking-[0.24em] text-white/42">Cobertura AIG</div>
+                      <h3 className="mt-2 max-w-[10ch] text-3xl font-medium leading-[1.02] text-white lg:text-[2.1rem]">
+                        {card.title}
+                      </h3>
                     </div>
-                    <span className="rounded-full border border-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.18em]" style={{ color: accent, background: accentSoft }}>
+                    <span
+                      className="whitespace-nowrap rounded-full border border-white/10 px-4 py-2 text-[11px] uppercase tracking-[0.2em]"
+                      style={{ color: accent, background: 'linear-gradient(180deg, rgba(19,153,255,0.28), rgba(19,153,255,0.14))' }}
+                    >
                       {card.value}
                     </span>
                   </div>
 
-                  <div className="mt-5 rounded-2xl border border-white/8 bg-[#0b1220]/70 p-4">
-                    <div className="text-[11px] uppercase tracking-[0.18em] text-white/45 mb-2">Cobertura</div>
-                    <p className="text-sm leading-relaxed text-white/72">{card.coverage}</p>
+                  <div className="mt-6 rounded-[1.5rem] border border-white/12 bg-white/[0.03] p-4 lg:p-5">
+                    <div className="text-[11px] uppercase tracking-[0.18em] text-white/42 mb-2">Cobertura</div>
+                    <p className="text-sm lg:text-[15px] leading-relaxed text-white/76">{card.coverage}</p>
                   </div>
 
-                  <p className="mt-4 text-sm lg:text-[15px] font-light leading-relaxed text-white/68">{card.body}</p>
+                  <p className="mt-5 text-sm lg:text-[15px] font-light leading-relaxed text-white/70">{card.body}</p>
                 </motion.article>
               ))}
             </div>
