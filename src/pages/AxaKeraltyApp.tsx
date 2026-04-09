@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom'
 
 export default function AxaKeraltyApp() {
-  return <Navigate to="/aig" replace />
+  return <Navigate to="/prudential" replace />
 }
