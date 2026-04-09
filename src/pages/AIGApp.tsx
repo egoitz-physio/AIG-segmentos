@@ -19,7 +19,9 @@ const sectionFade = {
   viewport: { once: true, margin: '-40px' },
 }
 
-const navLinks = [
+type ActiveSection = 'coberturas' | 'nichos' | 'modulos' | 'roadmap'
+
+const sectionTabs: Array<{ id: ActiveSection; label: string }> = [
   { id: 'coberturas', label: 'Coberturas' },
   { id: 'nichos', label: 'Nichos' },
   { id: 'modulos', label: 'Módulos' },
@@ -328,6 +330,7 @@ function Pill({ children }: { children: string }) {
 
 export default function AIGApp() {
   const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState<ActiveSection>('coberturas')
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40)
@@ -343,10 +346,6 @@ export default function AIGApp() {
       document.title = previousTitle
     }
   }, [])
-
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#09131f] text-white">
@@ -364,18 +363,20 @@ export default function AIGApp() {
       <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled ? 'bg-[#09131f]/82 backdrop-blur-2xl border-b border-white/8' : 'bg-gradient-to-b from-black/32 to-transparent'}`}>
         <div className="mx-auto max-w-[1440px] px-5 lg:px-10">
           <div className="flex h-18 lg:h-20 items-center justify-between gap-6">
-            <button onClick={() => scrollTo('hero')} className="flex items-center gap-4 group">
+            <button onClick={() => setActiveSection('coberturas')} className="flex items-center gap-4 group">
               <img src="/images/fisify-logo-white.png" alt="Fisify" className="h-6 brightness-0 invert transition-opacity group-hover:opacity-70" />
               <span className="text-white/20">×</span>
               <img src="/images/logo-aig.svg" alt="AIG" className="h-7 brightness-0 invert transition-opacity group-hover:opacity-70" />
             </button>
 
             <nav className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) => (
+              {sectionTabs.map((link) => (
                 <button
                   key={link.id}
-                  onClick={() => scrollTo(link.id)}
-                  className="text-[11px] uppercase tracking-[0.22em] text-white/58 transition-colors hover:text-white"
+                  onClick={() => setActiveSection(link.id)}
+                  className={`text-[11px] uppercase tracking-[0.22em] transition-colors hover:text-white ${
+                    activeSection === link.id ? 'text-white' : 'text-white/58'
+                  }`}
                 >
                   {link.label}
                 </button>
@@ -383,7 +384,7 @@ export default function AIGApp() {
             </nav>
 
             <button
-              onClick={() => scrollTo('cta')}
+              onClick={() => setActiveSection('roadmap')}
               className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[11px] uppercase tracking-[0.18em] text-[#08101a] transition-transform hover:-translate-y-0.5"
             >
               Agendar reunión
@@ -424,107 +425,77 @@ export default function AIGApp() {
                   ))}
                 </div>
               </div>
-            </motion.div>
 
-            <motion.div {...sectionFade} transition={{ delay: 0.08 }} className="lg:col-span-5">
-              <div className="rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(13,20,34,0.96),rgba(10,16,27,0.94))] p-6 lg:p-8">
-                <div className="flex items-center gap-3 text-sm uppercase tracking-[0.2em] text-white/55">
-                  <QuoteMark />
-                  Cita destacada
-                </div>
-                <p className="mt-5 text-2xl lg:text-[2rem] font-light leading-[1.25] text-white">
-                  “Un seguro que solo actúa cuando algo falla compite en precio. Un seguro que cuida al asegurado todos los días compite en valor.”
+              <div className="mt-6 max-w-4xl rounded-[2rem] border border-white/8 bg-white/[0.03] p-5 lg:p-6">
+                <div className="text-[11px] uppercase tracking-[0.24em] text-white/45">Cita estratégica</div>
+                <p className="mt-3 text-xl lg:text-2xl font-light leading-[1.28] text-white">
+                  Un seguro que cuida al asegurado todos los días compite en valor, no solo en precio.
                 </p>
-                <div className="mt-8 rounded-[1.5rem] border border-white/8 bg-white/[0.03] p-5">
-                  <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.18em] text-white/45">
-                    <ShieldCheck size={14} style={{ color: accent }} />
-                    Acceso global
-                  </div>
-                  <div className="mt-4 grid gap-3">
-                    {[
-                      'App móvil',
-                      'Web',
-                      'En cualquier país',
-                      '24 horas',
-                      'En español',
-                      'Fisioterapeuta real',
-                      'Plan personalizado',
-                      'Sin lista de espera',
-                    ].map((item) => (
-                      <div key={item} className="flex items-center gap-3 rounded-2xl border border-white/8 bg-[#0b1220]/70 px-4 py-3 text-sm text-white/72">
-                        <CircleCheck size={16} style={{ color: accent }} />
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
             </motion.div>
-          </div>
-        </section>
 
-        <section className="mx-auto max-w-[1440px] px-5 lg:px-10 py-14 lg:py-16">
-          <SectionHeader
-            eyebrow="Referencias visuales"
-            title="Material AIG que inspira la propuesta"
-            subtitle="Tomamos como base el lenguaje visual del PDF para reforzar coherencia: azul institucional, fotografía clínica y bloques muy claros."
-          />
-
-          <div className="grid lg:grid-cols-12 gap-5">
-            <motion.article
-              {...sectionFade}
-              className="lg:col-span-7 overflow-hidden rounded-[2rem] border border-white/10 bg-white"
-            >
-              <div className="relative aspect-[16/10]">
-                <img
-                  src={referenceVisuals[0].src}
-                  alt={referenceVisuals[0].title}
-                  className="h-full w-full object-cover object-center"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#09131f]/70 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6">
-                  <div className="inline-flex rounded-full bg-white/90 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-[#09131f]">
-                    {referenceVisuals[0].title}
-                  </div>
-                  <p className="mt-3 max-w-xl text-sm lg:text-[15px] font-light leading-relaxed text-white/85">
-                    {referenceVisuals[0].body}
-                  </p>
-                </div>
-              </div>
-            </motion.article>
-
-            <div className="lg:col-span-5 grid gap-5">
-              {referenceVisuals.slice(1).map((visual, index) => (
-                <motion.article
-                  key={visual.title}
-                  {...sectionFade}
-                  transition={{ delay: index * 0.06 }}
-                  className="overflow-hidden rounded-[1.7rem] border border-white/10 bg-[#eef4ff]"
-                >
-                  <div className="grid grid-cols-12">
-                    <div className="col-span-5 relative min-h-[170px]">
-                      <img
-                        src={visual.src}
-                        alt={visual.title}
-                        className="h-full w-full object-cover object-center"
-                      />
+            <motion.div {...sectionFade} transition={{ delay: 0.08 }} className="lg:col-span-5 flex flex-col gap-5">
+              <article className="overflow-hidden rounded-[2rem] border border-white/10 bg-white">
+                <div className="relative aspect-[16/11]">
+                  <img
+                    src={referenceVisuals[0].src}
+                    alt={referenceVisuals[0].title}
+                    className="h-full w-full object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#09131f]/70 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6">
+                    <div className="inline-flex rounded-full bg-white/90 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-[#09131f]">
+                      {referenceVisuals[0].title}
                     </div>
-                    <div className="col-span-7 flex flex-col justify-center p-5 lg:p-6">
+                    <p className="mt-3 max-w-xl text-sm lg:text-[15px] font-light leading-relaxed text-white/85">
+                      {referenceVisuals[0].body}
+                    </p>
+                  </div>
+                </div>
+              </article>
+
+              <div className="grid sm:grid-cols-2 gap-5">
+                {[referenceVisuals[1], referenceVisuals[2]].map((visual) => (
+                  <article key={visual.title} className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#eef4ff]">
+                    <div className="relative aspect-[16/10]">
+                      <img src={visual.src} alt={visual.title} className="h-full w-full object-cover object-center" />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-[#09131f]/15 via-transparent to-transparent" />
+                    </div>
+                    <div className="p-4 lg:p-5">
                       <div className="text-[11px] uppercase tracking-[0.24em]" style={{ color: accent }}>
                         {visual.title}
                       </div>
-                      <p className="mt-3 text-sm lg:text-[15px] font-light leading-relaxed text-[#0d1b2a]/80">
+                      <p className="mt-2 text-sm font-light leading-relaxed text-[#0d1b2a]/78">
                         {visual.body}
                       </p>
                     </div>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
+                  </article>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </section>
 
-        <section id="coberturas" className="mx-auto max-w-[1440px] px-5 lg:px-10 py-16 lg:py-20">
+        <section className="mx-auto max-w-[1440px] px-5 lg:px-10 pb-8">
+          <div className="flex flex-wrap gap-3 rounded-[1.5rem] border border-white/8 bg-white/[0.03] p-3">
+            {sectionTabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveSection(tab.id)}
+                className={`rounded-full px-4 py-2 text-[11px] uppercase tracking-[0.18em] transition-all ${
+                  activeSection === tab.id
+                    ? 'bg-white text-[#08101a]'
+                    : 'text-white/62 hover:text-white'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </section>
+
+        {activeSection === 'coberturas' && (
+        <section id="coberturas" className="mx-auto max-w-[1440px] px-5 lg:px-10 py-10 lg:py-16">
           <SectionHeader
             eyebrow="Cobertura por cobertura"
             title="Cómo Fisify potencia cada producto AIG"
@@ -548,6 +519,26 @@ export default function AIGApp() {
                   <div className="rounded-2xl border border-white/8 bg-white/[0.05] px-4 py-3 text-sm text-white/75">
                     <div className="text-[11px] uppercase tracking-[0.18em] text-white/45 mb-1">Texto clave</div>
                     El único beneficio del seguro disponible donde ocurra el siniestro.
+                  </div>
+                </div>
+
+                <div className="mt-6 overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#eef4ff]">
+                  <div className="grid grid-cols-12">
+                    <div className="col-span-5 relative min-h-[150px]">
+                      <img
+                        src={referenceVisuals[1].src}
+                        alt={referenceVisuals[1].title}
+                        className="h-full w-full object-cover object-center"
+                      />
+                    </div>
+                    <div className="col-span-7 p-4 lg:p-5 flex flex-col justify-center">
+                      <div className="text-[11px] uppercase tracking-[0.24em]" style={{ color: accent }}>
+                        {referenceVisuals[1].title}
+                      </div>
+                      <p className="mt-2 text-sm font-light leading-relaxed text-[#0d1b2a]/78">
+                        {referenceVisuals[1].body}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -612,13 +603,41 @@ export default function AIGApp() {
             </div>
           </motion.div>
         </section>
+        )}
 
-        <section id="nichos" className="mx-auto max-w-[1440px] px-5 lg:px-10 py-16 lg:py-20">
+        {activeSection === 'nichos' && (
+        <section id="nichos" className="mx-auto max-w-[1440px] px-5 lg:px-10 py-10 lg:py-16">
           <SectionHeader
             eyebrow="Dos nichos prioritarios"
             title="Propuesta específica por segmento"
             subtitle="Dentro de la vertical de accidentes y salud, AIG quiere potenciar dos perfiles concretos. Fisify tiene propuesta de valor diferencial y productos ya validados para ambos."
           />
+
+          <motion.article
+            {...sectionFade}
+            className="mb-6 overflow-hidden rounded-[2rem] border border-white/10 bg-[#eef4ff]"
+          >
+            <div className="grid lg:grid-cols-12">
+              <div className="lg:col-span-5 relative min-h-[200px]">
+                <img
+                  src={referenceVisuals[3].src}
+                  alt={referenceVisuals[3].title}
+                  className="h-full w-full object-cover object-center"
+                />
+              </div>
+              <div className="lg:col-span-7 p-6 lg:p-8 flex flex-col justify-center">
+                <div className="text-[11px] uppercase tracking-[0.24em]" style={{ color: accent }}>
+                  {referenceVisuals[3].title}
+                </div>
+                <h3 className="mt-3 text-2xl lg:text-3xl font-light text-[#0d1b2a]">
+                  Un beneficio que acompaña el crecimiento por canales y socios
+                </h3>
+                <p className="mt-4 max-w-3xl text-sm lg:text-[15px] font-light leading-relaxed text-[#0d1b2a]/78">
+                  La propuesta encaja con una distribución más amplia: aseguradora, retail y partners convierten la fisioterapia digital en un valor de uso frecuente.
+                </p>
+              </div>
+            </div>
+          </motion.article>
 
           <div className="grid lg:grid-cols-2 gap-6">
             {niches.map((niche, nicheIndex) => (
@@ -665,8 +684,10 @@ export default function AIGApp() {
             ))}
           </div>
         </section>
+        )}
 
-        <section id="modulos" className="mx-auto max-w-[1440px] px-5 lg:px-10 py-16 lg:py-20">
+        {activeSection === 'modulos' && (
+        <section id="modulos" className="mx-auto max-w-[1440px] px-5 lg:px-10 py-10 lg:py-16">
           <SectionHeader
             eyebrow="Arquitectura del producto"
             title="6 módulos que Fisify integra en el seguro AIG"
@@ -691,15 +712,6 @@ export default function AIGApp() {
               </motion.article>
             ))}
           </div>
-        </section>
-
-        <section className="mx-auto max-w-[1440px] px-5 lg:px-10 py-16 lg:py-20">
-          <SectionHeader
-            eyebrow="Propuesta de valor"
-            title="Todos ganan. Nadie lo tiene hoy."
-            subtitle="La alianza Fisify × AIG crea valor diferencial para cada actor en la cadena, desde la aseguradora hasta el asegurado final."
-          />
-
           <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-5">
             {valueActors.map((actor, index) => (
               <motion.article
@@ -722,8 +734,10 @@ export default function AIGApp() {
             ))}
           </div>
         </section>
+        )}
 
-        <section className="mx-auto max-w-[1440px] px-5 lg:px-10 py-16 lg:py-20">
+        {activeSection === 'roadmap' && (
+        <section className="mx-auto max-w-[1440px] px-5 lg:px-10 py-10 lg:py-16">
           <SectionHeader
             eyebrow="Métricas del piloto"
             title="Antes del lanzamiento hay que acordar cómo se mide el éxito"
@@ -748,14 +762,13 @@ export default function AIGApp() {
               </motion.article>
             ))}
           </div>
-        </section>
-
-        <section id="roadmap" className="mx-auto max-w-[1440px] px-5 lg:px-10 py-16 lg:py-20">
-          <SectionHeader
-            eyebrow="Hoja de ruta"
-            title="De la conversación al piloto"
-            subtitle="5 pasos para pasar de la reunión inicial a un primer piloto midiendo resultados reales en mercado."
-          />
+          <div className="mt-14">
+            <SectionHeader
+              eyebrow="Hoja de ruta"
+              title="De la conversación al piloto"
+              subtitle="5 pasos para pasar de la reunión inicial a un primer piloto midiendo resultados reales en mercado."
+            />
+          </div>
 
           <div className="grid lg:grid-cols-5 gap-4">
             {roadmap.map((step) => (
@@ -770,17 +783,8 @@ export default function AIGApp() {
               </motion.article>
             ))}
           </div>
-        </section>
 
-        <section id="cta" className="mx-auto max-w-[1440px] px-5 lg:px-10 py-16 lg:py-24">
-          <motion.div
-            {...sectionFade}
-            className="rounded-[2.25rem] border p-7 lg:p-10"
-            style={{
-              borderColor: 'rgba(19, 153, 255, 0.24)',
-              background: 'linear-gradient(135deg, rgba(19, 153, 255, 0.22), rgba(255, 255, 255, 0.04))',
-            }}
-          >
+          <div className="mt-14 rounded-[2.25rem] border p-7 lg:p-10" style={{ borderColor: 'rgba(19, 153, 255, 0.24)', background: 'linear-gradient(135deg, rgba(19, 153, 255, 0.22), rgba(255, 255, 255, 0.04))' }}>
             <div className="flex items-start gap-4">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl border" style={{ borderColor: 'rgba(19, 153, 255, 0.25)', background: accentSoft, color: accent }}>
                 <Workflow size={20} />
@@ -803,17 +807,19 @@ export default function AIGApp() {
                     Agendar reunión con AIG
                     <ArrowRight size={16} />
                   </a>
-                  <a
-                    href="#coberturas"
+                  <button
+                    type="button"
+                    onClick={() => setActiveSection('coberturas')}
                     className="inline-flex items-center justify-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-6 py-3 text-sm font-medium text-white/85 transition-colors hover:bg-white/[0.07]"
                   >
                     Ver propuesta completa
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </section>
+        )}
       </main>
 
       <footer className="border-t border-white/10 bg-[#050810]">
@@ -829,19 +835,5 @@ export default function AIGApp() {
         </div>
       </footer>
     </div>
-  )
-}
-
-function QuoteMark() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4" fill="none">
-      <path
-        d="M8.5 7C6.57 7 5 8.57 5 10.5V14h4V9.5H7.5A1.5 1.5 0 0 1 9 8V7H8.5Zm10 0c-1.93 0-3.5 1.57-3.5 3.5V14h4V9.5H17.5A1.5 1.5 0 0 1 19 8V7h-.5Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   )
 }
