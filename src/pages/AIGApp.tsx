@@ -297,7 +297,10 @@ function SectionHeader({
         <span className="text-[11px] uppercase tracking-[0.28em] text-white/45">{eyebrow}</span>
         <div className="h-px flex-1 bg-white/10" />
       </div>
-      <h2 className="max-w-5xl text-4xl md:text-5xl lg:text-[3.6rem] font-light leading-[1.04] text-white tracking-tight" style={{ fontFamily: 'Outfit, sans-serif' }}>
+      <h2
+        className="max-w-5xl text-4xl md:text-5xl lg:text-[3.6rem] font-light leading-[1.04] text-white tracking-tight"
+        style={{ fontFamily: 'Outfit, sans-serif' }}
+      >
         {title}
       </h2>
       {subtitle && (
@@ -360,11 +363,19 @@ export default function AIGApp() {
         />
       </div>
 
-      <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled ? 'bg-[#09131f]/82 backdrop-blur-2xl border-b border-white/8' : 'bg-gradient-to-b from-black/32 to-transparent'}`}>
+      <header
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+          scrolled ? 'bg-[#09131f]/82 backdrop-blur-2xl border-b border-white/8' : 'bg-gradient-to-b from-black/32 to-transparent'
+        }`}
+      >
         <div className="mx-auto max-w-[1440px] px-5 lg:px-10">
           <div className="flex h-18 lg:h-20 items-center justify-between gap-6">
             <button onClick={() => setActiveSection('coberturas')} className="flex items-center gap-4 group">
-              <img src="/images/fisify-logo-white.png" alt="Fisify" className="h-6 brightness-0 invert transition-opacity group-hover:opacity-70" />
+              <img
+                src="/images/fisify-logo-white.png"
+                alt="Fisify"
+                className="h-6 brightness-0 invert transition-opacity group-hover:opacity-70"
+              />
               <span className="text-white/20">×</span>
               <img src="/images/logo-aig.svg" alt="AIG" className="h-7 brightness-0 invert transition-opacity group-hover:opacity-70" />
             </button>
@@ -403,12 +414,16 @@ export default function AIGApp() {
                 Propuesta estratégica · Confidencial · 2025
               </div>
 
-              <h1 className="mt-6 max-w-4xl text-5xl md:text-6xl lg:text-[5.4rem] font-light leading-[0.95] tracking-tight text-white" style={{ fontFamily: 'Outfit, sans-serif' }}>
+              <h1
+                className="mt-6 max-w-4xl text-5xl md:text-6xl lg:text-[5.4rem] font-light leading-[0.95] tracking-tight text-white"
+                style={{ fontFamily: 'Outfit, sans-serif' }}
+              >
                 Fisioterapia dentro de cada cobertura AIG
               </h1>
 
               <p className="mt-6 max-w-3xl text-lg md:text-xl font-light leading-relaxed text-white/68">
-                Fisify integra prevención, rehabilitación y atención fisioterapéutica directamente en el seguro de accidentes y salud de AIG, accesible 24/7 desde cualquier lugar del mundo.
+                Fisify integra prevención, rehabilitación y atención fisioterapéutica directamente en el seguro de accidentes y salud
+                de AIG, accesible 24/7 desde cualquier lugar del mundo.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -456,7 +471,10 @@ export default function AIGApp() {
 
               <div className="grid sm:grid-cols-2 gap-5">
                 {[referenceVisuals[1], referenceVisuals[2]].map((visual) => (
-                  <article key={visual.title} className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#eef4ff]">
+                  <article
+                    key={visual.title}
+                    className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#eef4ff]"
+                  >
                     <div className="relative aspect-[16/10]">
                       <img src={visual.src} alt={visual.title} className="h-full w-full object-cover object-center" />
                       <div className="absolute inset-0 bg-gradient-to-tr from-[#09131f]/15 via-transparent to-transparent" />
@@ -483,9 +501,7 @@ export default function AIGApp() {
                 key={tab.id}
                 onClick={() => setActiveSection(tab.id)}
                 className={`rounded-full px-4 py-2 text-[11px] uppercase tracking-[0.18em] transition-all ${
-                  activeSection === tab.id
-                    ? 'bg-white text-[#08101a]'
-                    : 'text-white/62 hover:text-white'
+                  activeSection === tab.id ? 'bg-white text-[#08101a]' : 'text-white/62 hover:text-white'
                 }`}
               >
                 {tab.label}
@@ -495,357 +511,403 @@ export default function AIGApp() {
         </section>
 
         {activeSection === 'coberturas' && (
-        <section id="coberturas" className="mx-auto max-w-[1440px] px-5 lg:px-10 py-10 lg:py-16">
-          <SectionHeader
-            eyebrow="Cobertura por cobertura"
-            title="Cómo Fisify potencia cada producto AIG"
-            subtitle="Para cada situación que AIG cubre, Fisify añade una capa de atención fisioterapéutica que acelera la recuperación, reduce la reclamación media y fideliza al asegurado."
-          />
+          <section id="coberturas" className="mx-auto max-w-[1440px] px-5 lg:px-10 py-10 lg:py-16">
+            <SectionHeader
+              eyebrow="Cobertura por cobertura"
+              title="Cómo Fisify potencia cada producto AIG"
+              subtitle="Para cada situación que AIG cubre, Fisify añade una capa de atención fisioterapéutica que acelera la recuperación, reduce la reclamación media y fideliza al asegurado."
+            />
 
-          <div className="grid lg:grid-cols-[1.05fr_1.95fr] gap-8 xl:gap-10 items-start">
-            <motion.div {...sectionFade} className="lg:sticky lg:top-28">
-              <div className="rounded-[2.25rem] border border-white/8 p-6 lg:p-8" style={{ background: 'linear-gradient(180deg, rgba(19,153,255,0.18), rgba(255,255,255,0.03))', boxShadow: '0 22px 70px rgba(0,0,0,0.18)' }}>
-                <div className="flex items-center justify-between gap-4">
-                  <div className="text-[11px] uppercase tracking-[0.24em] text-white/42">Coberturas globales</div>
-                  <div className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-white/72">
-                    24 / 7 / 365
-                  </div>
-                </div>
-                <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-white/70">
-                  <Globe2 size={12} style={{ color: accent }} />
-                  Fisify siempre disponible - 24 / 7 / 365
-                </div>
-                <p className="mt-5 max-w-md text-base lg:text-lg font-light leading-relaxed text-white/72">
-                  Tanto si el accidente ocurre en México, en un viaje de negocios por Europa o en un viaje de aventura en Asia, el asegurado accede al mismo nivel de atención desde su móvil, sin coste de desplazamiento y sin burocracia.
-                </p>
-                <p className="mt-4 max-w-md text-base lg:text-lg font-light leading-relaxed text-white/72">
-                  Eso convierte a Fisify en el único beneficio del seguro que es tan global como la cobertura de AIG.
-                </p>
-                <div className="mt-6 grid gap-3">
-                  <div className="rounded-[1.4rem] border border-white/8 bg-white/[0.05] px-4 py-4 text-sm text-white/76">
-                    <div className="text-[11px] uppercase tracking-[0.18em] text-white/45 mb-1">Texto clave</div>
-                    El único beneficio del seguro disponible donde ocurra el siniestro.
-                  </div>
-                </div>
-
-                <div className="mt-6 overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#eef4ff]">
-                  <div className="grid grid-cols-12">
-                    <div className="col-span-5 relative min-h-[160px]">
-                      <img
-                        src={referenceVisuals[1].src}
-                        alt={referenceVisuals[1].title}
-                        className="h-full w-full object-cover object-center"
-                      />
-                    </div>
-                    <div className="col-span-7 p-4 lg:p-5 flex flex-col justify-center">
-                      <div className="text-[11px] uppercase tracking-[0.24em]" style={{ color: accent }}>
-                        {referenceVisuals[1].title}
-                      </div>
-                      <p className="mt-2 text-sm font-light leading-relaxed text-[#0d1b2a]/78">
-                        {referenceVisuals[1].body}
-                      </p>
+            <div className="grid lg:grid-cols-[1.05fr_1.95fr] gap-8 xl:gap-10 items-start">
+              <motion.div {...sectionFade} className="lg:sticky lg:top-28">
+                <div
+                  className="rounded-[2.25rem] border border-white/8 p-6 lg:p-8"
+                  style={{
+                    background: 'linear-gradient(180deg, rgba(19,153,255,0.18), rgba(255,255,255,0.03))',
+                    boxShadow: '0 22px 70px rgba(0,0,0,0.18)',
+                  }}
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="text-[11px] uppercase tracking-[0.24em] text-white/42">Coberturas globales</div>
+                    <div className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-white/72">
+                      24 / 7 / 365
                     </div>
                   </div>
-                </div>
-
-                <div className="mt-6 rounded-[1.4rem] border border-white/8 bg-white/[0.04] px-4 py-4">
-                  <div className="text-[11px] uppercase tracking-[0.24em] text-white/42">Cobertura global</div>
-                  <p className="mt-2 text-sm font-light leading-relaxed text-white/72">
-                    Un mismo estándar de fisioterapia, sin importar el país, el canal o el momento del siniestro.
+                  <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-white/70">
+                    <Globe2 size={12} style={{ color: accent }} />
+                    Fisify siempre disponible - 24 / 7 / 365
+                  </div>
+                  <p className="mt-5 max-w-md text-base lg:text-lg font-light leading-relaxed text-white/72">
+                    Tanto si el accidente ocurre en México, en un viaje de negocios por Europa o en un viaje de aventura en Asia, el asegurado
+                    accede al mismo nivel de atención desde su móvil, sin coste de desplazamiento y sin burocracia.
                   </p>
+                  <p className="mt-4 max-w-md text-base lg:text-lg font-light leading-relaxed text-white/72">
+                    Eso convierte a Fisify en el único beneficio del seguro que es tan global como la cobertura de AIG.
+                  </p>
+                  <div className="mt-6 grid gap-3">
+                    <div className="rounded-[1.4rem] border border-white/8 bg-white/[0.05] px-4 py-4 text-sm text-white/76">
+                      <div className="text-[11px] uppercase tracking-[0.18em] text-white/45 mb-1">Texto clave</div>
+                      El único beneficio del seguro disponible donde ocurra el siniestro.
+                    </div>
+                  </div>
+
+                  <div className="mt-6 overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#eef4ff]">
+                    <div className="grid grid-cols-12">
+                      <div className="col-span-5 relative min-h-[160px]">
+                        <img
+                          src={referenceVisuals[1].src}
+                          alt={referenceVisuals[1].title}
+                          className="h-full w-full object-cover object-center"
+                        />
+                      </div>
+                      <div className="col-span-7 p-4 lg:p-5 flex flex-col justify-center">
+                        <div className="text-[11px] uppercase tracking-[0.24em]" style={{ color: accent }}>
+                          {referenceVisuals[1].title}
+                        </div>
+                        <p className="mt-2 text-sm font-light leading-relaxed text-[#0d1b2a]/78">
+                          {referenceVisuals[1].body}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 rounded-[1.4rem] border border-white/8 bg-white/[0.04] px-4 py-4">
+                    <div className="text-[11px] uppercase tracking-[0.24em] text-white/42">Cobertura global</div>
+                    <p className="mt-2 text-sm font-light leading-relaxed text-white/72">
+                      Un mismo estándar de fisioterapia, sin importar el país, el canal o el momento del siniestro.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              <div className="grid md:grid-cols-2 gap-4 lg:gap-5 items-stretch">
+                {coverageCards.map((card, index) => (
+                  <motion.article
+                    key={card.title}
+                    {...sectionFade}
+                    transition={{ delay: index * 0.05 }}
+                    className="flex h-full min-h-[27rem] flex-col rounded-[2rem] border border-white/10 p-6 lg:p-7"
+                    style={{
+                      background: 'linear-gradient(180deg, rgba(13,20,34,0.985), rgba(8,13,24,0.965))',
+                      boxShadow: '0 24px 80px rgba(0, 0, 0, 0.24)',
+                    }}
+                  >
+                    <div className="grid grid-cols-[1fr_auto] items-start gap-4">
+                      <div className="min-w-0">
+                        <div className="text-[11px] uppercase tracking-[0.26em] text-white/42">Cobertura AIG</div>
+                        <h3 className="mt-2 max-w-[8ch] text-3xl font-medium leading-[0.98] tracking-tight text-white lg:text-[2.1rem]">
+                          {card.title}
+                        </h3>
+                      </div>
+                      <span
+                        className="max-w-[11rem] justify-self-end rounded-full border border-white/10 px-4 py-2 text-left text-[11px] uppercase tracking-[0.18em] leading-[1.25]"
+                        style={{
+                          color: accent,
+                          background: 'linear-gradient(180deg, rgba(19,153,255,0.24), rgba(19,153,255,0.12))',
+                        }}
+                      >
+                        {card.value}
+                      </span>
+                    </div>
+
+                    <div className="mt-6 rounded-[1.5rem] border border-white/12 bg-white/[0.03] p-4 lg:p-5">
+                      <div className="text-[11px] uppercase tracking-[0.18em] text-white/42 mb-2">Cobertura</div>
+                      <p className="text-sm lg:text-[15px] leading-relaxed text-white/78">{card.coverage}</p>
+                    </div>
+
+                    <p className="mt-5 text-sm lg:text-[15px] font-light leading-relaxed text-white/72 flex-1">
+                      {card.body}
+                    </p>
+                  </motion.article>
+                ))}
+              </div>
+            </div>
+
+            <motion.div
+              {...sectionFade}
+              transition={{ delay: 0.05 }}
+              className="mt-8 rounded-[2rem] border p-6 lg:p-8"
+              style={{
+                borderColor: 'rgba(19, 153, 255, 0.24)',
+                background: 'linear-gradient(135deg, rgba(19, 153, 255, 0.18), rgba(255, 255, 255, 0.04))',
+              }}
+            >
+              <div className="flex items-start gap-4">
+                <div
+                  className="flex h-12 w-12 items-center justify-center rounded-2xl border"
+                  style={{ borderColor: 'rgba(19, 153, 255, 0.24)', background: accentSoft, color: accent }}
+                >
+                  <ShieldCheck size={20} />
+                </div>
+                <div>
+                  <div className="text-[11px] uppercase tracking-[0.24em] text-white/45">Tarjeta destacada global</div>
+                  <h3 className="mt-2 text-2xl lg:text-3xl font-light text-white">Fisify es tan global como la cobertura de AIG</h3>
+                  <p className="mt-3 max-w-4xl text-white/68 font-light leading-relaxed">
+                    AIG cubre al asegurado en cualquier país. Ningún beneficio de salud del seguro podía acompañarle con la misma cobertura
+                    geográfica. Fisify es el primero: 100% digital, en español, sin importar dónde esté el asegurado cuando necesite atención.
+                  </p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {[
+                      'App móvil',
+                      'Web',
+                      'En cualquier país',
+                      '24 horas',
+                      'En español',
+                      'Fisioterapeuta real',
+                      'Plan personalizado',
+                      'Sin lista de espera',
+                    ].map((pill) => (
+                      <span
+                        key={pill}
+                        className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-2 text-[11px] uppercase tracking-[0.16em] text-white/70"
+                      >
+                        {pill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-4 lg:gap-5 items-stretch">
-              {coverageCards.map((card, index) => (
-                <motion.article
-                  key={card.title}
-                  {...sectionFade}
-                  transition={{ delay: index * 0.05 }}
-                  className="flex h-full min-h-[27rem] flex-col rounded-[2rem] border border-white/10 p-6 lg:p-7"
-                  style={{
-                    background: 'linear-gradient(180deg, rgba(13,20,34,0.985), rgba(8,13,24,0.965))',
-                    boxShadow: '0 24px 80px rgba(0, 0, 0, 0.24)',
-                  }}
-                >
-                  <div className="grid grid-cols-[1fr_auto] items-start gap-4">
-                    <div className="min-w-0">
-                      <div className="text-[11px] uppercase tracking-[0.26em] text-white/42">Cobertura AIG</div>
-                      <h3 className="mt-2 max-w-[8ch] text-3xl font-medium leading-[0.98] tracking-tight text-white lg:text-[2.1rem] text-balance">
-                        {card.title}
-                      </h3>
-                    </div>
-                    <span
-                      className="max-w-[11rem] justify-self-end rounded-full border border-white/10 px-4 py-2 text-left text-[11px] uppercase tracking-[0.18em] leading-[1.25]"
-                      style={{
-                        color: accent,
-                        background: 'linear-gradient(180deg, rgba(19,153,255,0.24), rgba(19,153,255,0.12))',
-                      }}
-                    >
-                      {card.value}
-                    </span>
-                  </div>
-
-                  <div className="mt-6 rounded-[1.5rem] border border-white/12 bg-white/[0.03] p-4 lg:p-5">
-                    <div className="text-[11px] uppercase tracking-[0.18em] text-white/42 mb-2">Cobertura</div>
-                    <p className="text-sm lg:text-[15px] leading-relaxed text-white/78">{card.coverage}</p>
-                  </div>
-
-                  <p className="mt-5 text-sm lg:text-[15px] font-light leading-relaxed text-white/72 flex-1">
-                    {card.body}
-                  </p>
-                </motion.article>
-              ))}
-            </div>
-          </div>
-
-          <motion.div
-            {...sectionFade}
-            transition={{ delay: 0.05 }}
-            className="mt-8 rounded-[2rem] border p-6 lg:p-8"
-            style={{
-              borderColor: 'rgba(19, 153, 255, 0.24)',
-              background: 'linear-gradient(135deg, rgba(19, 153, 255, 0.18), rgba(255, 255, 255, 0.04))',
-            }}
-          >
-            <div className="flex items-start gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border" style={{ borderColor: 'rgba(19, 153, 255, 0.24)', background: accentSoft, color: accent }}>
-                <ShieldCheck size={20} />
-              </div>
-              <div>
-                <div className="text-[11px] uppercase tracking-[0.24em] text-white/45">Tarjeta destacada global</div>
-                <h3 className="mt-2 text-2xl lg:text-3xl font-light text-white">Fisify es tan global como la cobertura de AIG</h3>
-                <p className="mt-3 max-w-4xl text-white/68 font-light leading-relaxed">
-                  AIG cubre al asegurado en cualquier país. Ningún beneficio de salud del seguro podía acompañarle con la misma cobertura geográfica. Fisify es el primero: 100% digital, en español, sin importar dónde esté el asegurado cuando necesite atención.
-                </p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {['App móvil', 'Web', 'En cualquier país', '24 horas', 'En español', 'Fisioterapeuta real', 'Plan personalizado', 'Sin lista de espera'].map((pill) => (
-                    <span key={pill} className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-2 text-[11px] uppercase tracking-[0.16em] text-white/70">
-                      {pill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </section>
+          </section>
         )}
 
         {activeSection === 'nichos' && (
-        <section id="nichos" className="mx-auto max-w-[1440px] px-5 lg:px-10 py-10 lg:py-16">
-          <SectionHeader
-            eyebrow="Dos nichos prioritarios"
-            title="Propuesta específica por segmento"
-            subtitle="Dentro de la vertical de accidentes y salud, AIG quiere potenciar dos perfiles concretos. Fisify tiene propuesta de valor diferencial y productos ya validados para ambos."
-          />
+          <section id="nichos" className="mx-auto max-w-[1440px] px-5 lg:px-10 py-10 lg:py-16">
+            <SectionHeader
+              eyebrow="Dos nichos prioritarios"
+              title="Propuesta específica por segmento"
+              subtitle="Dentro de la vertical de accidentes y salud, AIG quiere potenciar dos perfiles concretos. Fisify tiene propuesta de valor diferencial y productos ya validados para ambos."
+            />
 
-          <motion.article
-            {...sectionFade}
-            className="mb-6 overflow-hidden rounded-[2rem] border border-white/10 bg-[#eef4ff]"
-          >
-            <div className="grid lg:grid-cols-12">
-              <div className="lg:col-span-5 relative min-h-[200px]">
-                <img
-                  src={referenceVisuals[3].src}
-                  alt={referenceVisuals[3].title}
-                  className="h-full w-full object-cover object-center"
-                />
-              </div>
-              <div className="lg:col-span-7 p-6 lg:p-8 flex flex-col justify-center">
-                <div className="text-[11px] uppercase tracking-[0.24em]" style={{ color: accent }}>
-                  {referenceVisuals[3].title}
+            <motion.article {...sectionFade} className="mb-6 overflow-hidden rounded-[2rem] border border-white/10 bg-[#eef4ff]">
+              <div className="grid lg:grid-cols-12">
+                <div className="lg:col-span-5 relative min-h-[200px]">
+                  <img
+                    src={referenceVisuals[3].src}
+                    alt={referenceVisuals[3].title}
+                    className="h-full w-full object-cover object-center"
+                  />
                 </div>
-                <h3 className="mt-3 text-2xl lg:text-3xl font-light text-[#0d1b2a]">
-                  Un beneficio que acompaña el crecimiento por canales y socios
-                </h3>
-                <p className="mt-4 max-w-3xl text-sm lg:text-[15px] font-light leading-relaxed text-[#0d1b2a]/78">
-                  La propuesta encaja con una distribución más amplia: aseguradora, retail y partners convierten la fisioterapia digital en un valor de uso frecuente.
-                </p>
-              </div>
-            </div>
-          </motion.article>
-
-          <div className="grid lg:grid-cols-2 gap-6">
-            {niches.map((niche, nicheIndex) => (
-              <motion.article
-                key={niche.title}
-                {...sectionFade}
-                transition={{ delay: nicheIndex * 0.08 }}
-                className="rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.025))] p-6 lg:p-8"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <div className="text-[11px] uppercase tracking-[0.24em] text-white/45">{niche.label}</div>
-                    <h3 className="mt-2 text-3xl font-medium text-white">{niche.title}</h3>
+                <div className="lg:col-span-7 p-6 lg:p-8 flex flex-col justify-center">
+                  <div className="text-[11px] uppercase tracking-[0.24em]" style={{ color: accent }}>
+                    {referenceVisuals[3].title}
                   </div>
-                  <div className="rounded-full border border-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.18em]" style={{ background: accentSoft, color: accent }}>
-                    Segmento
-                  </div>
+                  <h3 className="mt-3 text-2xl lg:text-3xl font-light text-[#0d1b2a]">
+                    Un beneficio que acompaña el crecimiento por canales y socios
+                  </h3>
+                  <p className="mt-4 max-w-3xl text-sm lg:text-[15px] font-light leading-relaxed text-[#0d1b2a]/78">
+                    La propuesta encaja con una distribución más amplia: aseguradora, retail y partners convierten la fisioterapia digital en un
+                    valor de uso frecuente.
+                  </p>
                 </div>
+              </div>
+            </motion.article>
 
-                <p className="mt-5 text-white/68 font-light leading-relaxed">{niche.description}</p>
-
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {niche.profiles.map((profile) => (
-                    <span key={profile} className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-[11px] uppercase tracking-[0.16em] text-white/72">
-                      {profile}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-6 rounded-2xl border border-white/8 bg-[#0b1220]/70 p-4">
-                  <div className="text-[11px] uppercase tracking-[0.18em] text-white/45 mb-2">Insight clave</div>
-                  <p className="text-sm lg:text-[15px] font-light leading-relaxed text-white/70">{niche.insight}</p>
-                </div>
-
-                <div className="mt-6 grid gap-3">
-                  {niche.points.map((point) => (
-                    <div key={point} className="flex items-start gap-3 rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3">
-                      <CircleCheck size={16} style={{ color: accent }} className="mt-0.5 shrink-0" />
-                      <p className="text-sm lg:text-[15px] font-light leading-relaxed text-white/72">{point}</p>
+            <div className="grid lg:grid-cols-2 gap-6">
+              {niches.map((niche, nicheIndex) => (
+                <motion.article
+                  key={niche.title}
+                  {...sectionFade}
+                  transition={{ delay: nicheIndex * 0.08 }}
+                  className="rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.025))] p-6 lg:p-8"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <div className="text-[11px] uppercase tracking-[0.24em] text-white/45">{niche.label}</div>
+                      <h3 className="mt-2 text-3xl font-medium text-white">{niche.title}</h3>
                     </div>
-                  ))}
-                </div>
-              </motion.article>
-            ))}
-          </div>
-        </section>
+                    <div
+                      className="rounded-full border border-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.18em]"
+                      style={{ background: accentSoft, color: accent }}
+                    >
+                      Segmento
+                    </div>
+                  </div>
+
+                  <p className="mt-5 text-white/68 font-light leading-relaxed">{niche.description}</p>
+
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {niche.profiles.map((profile) => (
+                      <span
+                        key={profile}
+                        className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-[11px] uppercase tracking-[0.16em] text-white/72"
+                      >
+                        {profile}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-6 rounded-2xl border border-white/8 bg-[#0b1220]/70 p-4">
+                    <div className="text-[11px] uppercase tracking-[0.18em] text-white/45 mb-2">Insight clave</div>
+                    <p className="text-sm lg:text-[15px] font-light leading-relaxed text-white/70">{niche.insight}</p>
+                  </div>
+
+                  <div className="mt-6 grid gap-3">
+                    {niche.points.map((point) => (
+                      <div key={point} className="flex items-start gap-3 rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3">
+                        <CircleCheck size={16} style={{ color: accent }} className="mt-0.5 shrink-0" />
+                        <p className="text-sm lg:text-[15px] font-light leading-relaxed text-white/72">{point}</p>
+                      </div>
+                    ))}
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </section>
         )}
 
         {activeSection === 'modulos' && (
-        <section id="modulos" className="mx-auto max-w-[1440px] px-5 lg:px-10 py-10 lg:py-16">
-          <SectionHeader
-            eyebrow="Arquitectura del producto"
-            title="6 módulos que Fisify integra en el seguro AIG"
-            subtitle="Cada módulo es activable de forma independiente según el diseño del producto y el canal de distribución elegido."
-          />
+          <section id="modulos" className="mx-auto max-w-[1440px] px-5 lg:px-10 py-10 lg:py-16">
+            <SectionHeader
+              eyebrow="Arquitectura del producto"
+              title="6 módulos que Fisify integra en el seguro AIG"
+              subtitle="Cada módulo es activable de forma independiente según el diseño del producto y el canal de distribución elegido."
+            />
 
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-            {modules.map((module) => (
-              <motion.article
-                key={module.num}
-                {...sectionFade}
-                className="rounded-[1.6rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] p-6"
-              >
-                <div className="flex items-center justify-between gap-4">
-                  <div className="text-[11px] uppercase tracking-[0.26em] text-white/45">{module.num}</div>
-                  <span className="rounded-full border border-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.16em]" style={{ background: accentSoft, color: accent }}>
-                    {module.tag}
-                  </span>
-                </div>
-                <h3 className="mt-4 text-2xl font-medium text-white">{module.title}</h3>
-                <p className="mt-4 text-sm lg:text-[15px] font-light leading-relaxed text-white/68">{module.body}</p>
-              </motion.article>
-            ))}
-          </div>
-          <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-5">
-            {valueActors.map((actor, index) => (
-              <motion.article
-                key={actor.title}
-                {...sectionFade}
-                transition={{ delay: index * 0.05 }}
-                className="rounded-[1.6rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] p-6"
-              >
-                <div className="text-[11px] uppercase tracking-[0.24em] text-white/45">{actor.title}</div>
-                <h3 className="mt-3 text-2xl font-medium text-white">{actor.subtitle}</h3>
-                <div className="mt-5 grid gap-3">
-                  {actor.items.map((item) => (
-                    <div key={item} className="flex items-start gap-3 rounded-2xl border border-white/8 bg-[#0b1220]/70 px-4 py-3">
-                      <BadgeCheck size={16} style={{ color: accent }} className="mt-0.5 shrink-0" />
-                      <p className="text-sm font-light leading-relaxed text-white/72">{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </motion.article>
-            ))}
-          </div>
-        </section>
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+              {modules.map((module) => (
+                <motion.article
+                  key={module.num}
+                  {...sectionFade}
+                  className="rounded-[1.6rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] p-6"
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="text-[11px] uppercase tracking-[0.26em] text-white/45">{module.num}</div>
+                    <span
+                      className="rounded-full border border-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.16em]"
+                      style={{ background: accentSoft, color: accent }}
+                    >
+                      {module.tag}
+                    </span>
+                  </div>
+                  <h3 className="mt-4 text-2xl font-medium text-white">{module.title}</h3>
+                  <p className="mt-4 text-sm lg:text-[15px] font-light leading-relaxed text-white/68">{module.body}</p>
+                </motion.article>
+              ))}
+            </div>
+
+            <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-5 mt-6">
+              {valueActors.map((actor, index) => (
+                <motion.article
+                  key={actor.title}
+                  {...sectionFade}
+                  transition={{ delay: index * 0.05 }}
+                  className="rounded-[1.6rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] p-6"
+                >
+                  <div className="text-[11px] uppercase tracking-[0.24em] text-white/45">{actor.title}</div>
+                  <h3 className="mt-3 text-2xl font-medium text-white">{actor.subtitle}</h3>
+                  <div className="mt-5 grid gap-3">
+                    {actor.items.map((item) => (
+                      <div key={item} className="flex items-start gap-3 rounded-2xl border border-white/8 bg-[#0b1220]/70 px-4 py-3">
+                        <BadgeCheck size={16} style={{ color: accent }} className="mt-0.5 shrink-0" />
+                        <p className="text-sm font-light leading-relaxed text-white/72">{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </section>
         )}
 
         {activeSection === 'roadmap' && (
-        <section className="mx-auto max-w-[1440px] px-5 lg:px-10 py-10 lg:py-16">
-          <SectionHeader
-            eyebrow="Métricas del piloto"
-            title="Antes del lanzamiento hay que acordar cómo se mide el éxito"
-            subtitle="Estas son las métricas que recomendamos acordar con AIG para el primer piloto."
-          />
+          <section className="mx-auto max-w-[1440px] px-5 lg:px-10 py-10 lg:py-16">
+            <SectionHeader
+              eyebrow="Métricas del piloto"
+              title="Antes del lanzamiento hay que acordar cómo se mide el éxito"
+              subtitle="Estas son las métricas que recomendamos acordar con AIG para el primer piloto."
+            />
 
-          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
-            {pilotMetrics.map((metric) => (
-            <motion.article
-              key={metric.value}
-              {...sectionFade}
-              className="rounded-[1.6rem] border p-6"
+            <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+              {pilotMetrics.map((metric) => (
+                <motion.article
+                  key={metric.value}
+                  {...sectionFade}
+                  className="rounded-[1.6rem] border p-6"
+                  style={{
+                    borderColor: 'rgba(19, 153, 255, 0.20)',
+                    background: 'linear-gradient(180deg, rgba(19, 153, 255, 0.14), rgba(255, 255, 255, 0.03))',
+                  }}
+                >
+                  <div className="text-4xl font-medium tracking-tight text-white" style={{ color: accent }}>
+                    {metric.value}
+                  </div>
+                  <p className="mt-4 text-sm lg:text-[15px] font-light leading-relaxed text-white/68">{metric.label}</p>
+                </motion.article>
+              ))}
+            </div>
+
+            <div className="mt-14">
+              <SectionHeader
+                eyebrow="Hoja de ruta"
+                title="De la conversación al piloto"
+                subtitle="5 pasos para pasar de la reunión inicial a un primer piloto midiendo resultados reales en mercado."
+              />
+            </div>
+
+            <div className="grid lg:grid-cols-5 gap-4">
+              {roadmap.map((step) => (
+                <motion.article
+                  key={step.step}
+                  {...sectionFade}
+                  className="rounded-[1.5rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] p-5"
+                >
+                  <div className="text-[11px] uppercase tracking-[0.28em] text-white/45">{step.step}</div>
+                  <h3 className="mt-3 text-xl font-medium text-white">{step.title}</h3>
+                  <p className="mt-3 text-sm font-light leading-relaxed text-white/68">{step.body}</p>
+                </motion.article>
+              ))}
+            </div>
+
+            <div
+              className="mt-14 rounded-[2.25rem] border p-7 lg:p-10"
               style={{
-                  borderColor: 'rgba(19, 153, 255, 0.20)',
-                  background: 'linear-gradient(180deg, rgba(19, 153, 255, 0.14), rgba(255, 255, 255, 0.03))',
+                borderColor: 'rgba(19, 153, 255, 0.24)',
+                background: 'linear-gradient(135deg, rgba(19, 153, 255, 0.22), rgba(255, 255, 255, 0.04))',
               }}
             >
-                <div className="text-4xl font-medium tracking-tight text-white" style={{ color: accent }}>
-                  {metric.value}
+              <div className="flex items-start gap-4">
+                <div
+                  className="flex h-12 w-12 items-center justify-center rounded-2xl border"
+                  style={{ borderColor: 'rgba(19, 153, 255, 0.25)', background: accentSoft, color: accent }}
+                >
+                  <Workflow size={20} />
                 </div>
-                <p className="mt-4 text-sm lg:text-[15px] font-light leading-relaxed text-white/68">{metric.label}</p>
-              </motion.article>
-            ))}
-          </div>
-          <div className="mt-14">
-            <SectionHeader
-              eyebrow="Hoja de ruta"
-              title="De la conversación al piloto"
-              subtitle="5 pasos para pasar de la reunión inicial a un primer piloto midiendo resultados reales en mercado."
-            />
-          </div>
-
-          <div className="grid lg:grid-cols-5 gap-4">
-            {roadmap.map((step) => (
-              <motion.article
-                key={step.step}
-                {...sectionFade}
-                className="rounded-[1.5rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] p-5"
-              >
-                <div className="text-[11px] uppercase tracking-[0.28em] text-white/45">{step.step}</div>
-                <h3 className="mt-3 text-xl font-medium text-white">{step.title}</h3>
-                <p className="mt-3 text-sm font-light leading-relaxed text-white/68">{step.body}</p>
-              </motion.article>
-            ))}
-          </div>
-
-          <div className="mt-14 rounded-[2.25rem] border p-7 lg:p-10" style={{ borderColor: 'rgba(19, 153, 255, 0.24)', background: 'linear-gradient(135deg, rgba(19, 153, 255, 0.22), rgba(255, 255, 255, 0.04))' }}>
-            <div className="flex items-start gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border" style={{ borderColor: 'rgba(19, 153, 255, 0.25)', background: accentSoft, color: accent }}>
-                <Workflow size={20} />
-              </div>
-              <div className="max-w-5xl">
-                <div className="text-[11px] uppercase tracking-[0.24em] text-white/45">Siguiente paso</div>
-                <h2 className="mt-3 text-3xl md:text-4xl lg:text-[3.3rem] font-light leading-[1.05] text-white" style={{ fontFamily: 'Outfit, sans-serif' }}>
-                  ¿Construimos el seguro que el mercado no tiene todavía?
-                </h2>
-                <p className="mt-5 max-w-4xl text-base md:text-lg lg:text-xl font-light leading-relaxed text-white/68">
-                  AIG tiene la distribución y la póliza. Fisify tiene la plataforma clínica y el equipo de fisioterapeutas. Juntos, podemos crear el primer seguro de accidentes y salud con fisioterapia activa integrada, accesible 24/7 desde cualquier país del mundo.
-                </p>
-
-                <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                  <a
-                    href="mailto:info@fisify.com?subject=Reuni%C3%B3n%20AIG%20x%20Fisify"
-                    className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-white transition-transform hover:-translate-y-0.5"
-                    style={{ background: accent }}
+                <div className="max-w-5xl">
+                  <div className="text-[11px] uppercase tracking-[0.24em] text-white/45">Siguiente paso</div>
+                  <h2
+                    className="mt-3 text-3xl md:text-4xl lg:text-[3.3rem] font-light leading-[1.05] text-white"
+                    style={{ fontFamily: 'Outfit, sans-serif' }}
                   >
-                    Agendar reunión con AIG
-                    <ArrowRight size={16} />
-                  </a>
-                  <button
-                    type="button"
-                    onClick={() => setActiveSection('coberturas')}
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-6 py-3 text-sm font-medium text-white/85 transition-colors hover:bg-white/[0.07]"
-                  >
-                    Ver propuesta completa
-                  </button>
+                    ¿Construimos el seguro que el mercado no tiene todavía?
+                  </h2>
+                  <p className="mt-5 max-w-4xl text-base md:text-lg lg:text-xl font-light leading-relaxed text-white/68">
+                    AIG tiene la distribución y la póliza. Fisify tiene la plataforma clínica y el equipo de fisioterapeutas. Juntos, podemos
+                    crear el primer seguro de accidentes y salud con fisioterapia activa integrada, accesible 24/7 desde cualquier país del
+                    mundo.
+                  </p>
+
+                  <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                    <a
+                      href="mailto:info@fisify.com?subject=Reuni%C3%B3n%20AIG%20x%20Fisify"
+                      className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-white transition-transform hover:-translate-y-0.5"
+                      style={{ background: accent }}
+                    >
+                      Agendar reunión con AIG
+                      <ArrowRight size={16} />
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() => setActiveSection('coberturas')}
+                      className="inline-flex items-center justify-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-6 py-3 text-sm font-medium text-white/85 transition-colors hover:bg-white/[0.07]"
+                    >
+                      Ver propuesta completa
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
         )}
       </main>
 
